@@ -16,6 +16,9 @@ class AdminPageNavBar extends React.PureComponent {
               <a href="#" className="nav-link d-flex align-items-center px-0">
                 <svg className="bi" width="20" height="20"><use xlinkHref="#account" /></svg><span className="ms-1 d-none d-sm-inline"> Профиль</span>
               </a>
+              <a href="#" className="nav-link d-flex align-items-center px-0">
+                <svg className="bi" width="20" height="20"><use xlinkHref="#newAdv" /></svg><span className="ms-1 d-none d-sm-inline"> Новое объявление</span>
+              </a>
             </li>
           </ul>
         </div>
