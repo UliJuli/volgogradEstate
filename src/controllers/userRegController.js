@@ -14,17 +14,17 @@ const createUser = async (req, res) => {
     const {
       firstName, lastName, phoneNumber, email, password,
     } = req.body;
-    const hash = await bcrypt.hash(password, 1);
+
     const tryFindNewUser = await User.findOne({ where: { email } });
-    if (!tryFindNewUser) {
-      const newUser = await User.create({
-        firstName, lastName, phoneNumber, email, password: hash,
-      });
-      req.session.newUser = newUser.login;
-      req.session.save(() => {
-        res.redirect('/');
-      });
-    } res.redirect('/user_registration');
+    if (tryFindNewUser) { res.redirect('/user_registration'); return; } // send error emai exist
+    const hash = await bcrypt.hash(password, 1);
+    const newUser = await User.create({
+      firstName, lastName, phoneNumber, email, password: hash,
+    });
+    req.session.user = newUser;
+    req.session.save(() => {
+      res.redirect('/');
+    });
   } catch (error) {
     console.log('Error', error);
   }

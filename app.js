@@ -41,7 +41,6 @@ const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты �
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
-
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
 

@@ -19,7 +19,9 @@ const userLogin = async (req, res) => {
       req.session.save(() => {
         res.redirect('/');
       });
-    } res.redirect('/login');
+      return;
+    }
+    res.redirect('/login');
   } catch (error) {
     console.log(error);
   }
