@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { SESSION_USER_SECRET, SESSION_USER_ALIVE } = process.env;
+const { SESSION_SECRET_USER, SESSION_USER_ALIVE } = process.env;
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -8,7 +8,7 @@ const FileStore = require('session-file-store')(session);
 const sessionConfig = {
   name: 'loginInfo', // * Название куки
   store: new FileStore(), // * подключение стора (БД для куки) для хранения
-  secret: SESSION_USER_SECRET, // * ключ для шифрования куки
+  secret: SESSION_SECRET_USER, // * ключ для шифрования куки
   resave: false, // * если true, пересохраняет сессию, даже если она не поменялась
   saveUninitialized: false, // * Если false, куки появляются только при установке req.session
   cookie: {

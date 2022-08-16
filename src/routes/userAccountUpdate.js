@@ -3,7 +3,7 @@ const express = require('express');
 const renderTemplate = require('../lib/renderTemplate');
 const ProfilePage = require('../views/pages/ProfilePage');
 
-const { User, WishList } = require('../db/models');
+const { User, WishList } = require('../../db/models');
 
 const router = express.Router();
 

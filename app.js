@@ -30,7 +30,6 @@ app.use(logInSessionWrapper);
 
 // * <-
 
-
 // * -> put here your routers
 const mainRouter = require('./src/routes/mainRouter');
 const userAccountRouter = require('./src/routes/userAccountRouter');

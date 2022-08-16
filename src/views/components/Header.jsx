@@ -5,11 +5,11 @@ class Header extends React.PureComponent {
     const { user, admin } = this.props;
     return (
       <header id="header">
-        <div className="logo-container">
-          <img className="logo-img" src="img/IMG_1829.png" alt="" />
-        </div>
         <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid">
+            <div className="logo-container">
+              <img className="logo-img" src="img/IMG_1829.png" alt="" />
+            </div>
             <a className="navbar-brand" href="#">Navbar</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />
@@ -28,7 +28,7 @@ class Header extends React.PureComponent {
                       Account
                     </button>
                     <ul className="dropdown-menu">
-                      {user && (<><li><a className="dropdown-item" href="#">wishlist</a></li><li><a className="dropdown-item" href="#">profile</a></li></>)}
+                      {user && (<><li><a className="dropdown-item" href="/wishlist">wishlist</a></li><li><a className="dropdown-item" href="/setting">profile</a></li></>)}
                       {admin && <li><a className="dropdown-item" href="#">advs</a></li>}
                     </ul>
                   </div>

@@ -1,7 +1,7 @@
 const ReactDOMServer = require('react-dom/server');
 const React = require('react');
 const ErrorPage = require('../views/pages/ErrorPage');
-const { User } = require('../db/models')
+const { User } = require('../../db/models')
 
 const checkLoginUser = async (req, res, next) => {
   const user = req.session.newUser;
