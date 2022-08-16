@@ -2,6 +2,7 @@ const React = require('react');
 
 const Header = require('./Header');
 const Footer = require('./Footer');
+const SvgIcons = require('./SvgIcons');
 
 module.exports = function Layout({ children, title }) {
   return (
@@ -25,6 +26,7 @@ module.exports = function Layout({ children, title }) {
         <title>{title}</title>
       </head>
       <body>
+        <SvgIcons />
         <Header />
         <main id="main-container">
           {children}

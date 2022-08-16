@@ -1,9 +1,9 @@
 const renderTemplate = require('../lib/renderTemplate');
-const AdminPage = require('../views/pages/AdminPage');
+const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
 
 const renderAdmin = async (req, res) => {
   res.locals.title = 'Some project';
-  renderTemplate(AdminPage, {}, res);
+  renderTemplate(AdminAdvsPage, {}, res);
 };
 
 module.exports = { renderAdmin };
