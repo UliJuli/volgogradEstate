@@ -4,9 +4,8 @@ const Header = require('./Header');
 const Footer = require('./Footer');
 const SvgIcons = require('./SvgIcons');
 
-module.exports = function Layout({
-  children, title, user, admin,
-}) {
+
+module.exports = function Layout({ children, title, user, admin }) {
   return (
     <html lang="en">
       <head>
