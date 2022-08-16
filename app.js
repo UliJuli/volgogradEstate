@@ -33,8 +33,10 @@ app.use(logInSessionWrapper);
 
 // * -> put here your routers
 const mainRouter = require('./src/routes/mainRouter');
+const userRegRoutes = require('./src/routes/userRegRoutes');
 
 app.use('/', mainRouter);
+app.use('/', userRegRoutes);
 // * <-
 
 // * -> commonErorHandler
