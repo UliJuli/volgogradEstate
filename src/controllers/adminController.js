@@ -40,6 +40,16 @@ const renderAdv = async (req, res) => {
   res.sendStatus(200);
 };
 
+const renderAdminProfile = async (req, res) => {
+  res.locals.title = 'Some project';
+  res.sendStatus(200);
+};
+
+const updateAdminProfile = async (req, res) => {
+  res.locals.title = 'Some project';
+  res.sendStatus(200);
+};
+
 module.exports = {
   redirectToAdvs,
   renderAdvs,
@@ -49,4 +59,6 @@ module.exports = {
   renderFormNewAdvs,
   renderFormEditAdvs,
   renderAdv,
+  renderAdminProfile,
+  updateAdminProfile,
 };

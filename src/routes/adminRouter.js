@@ -2,9 +2,13 @@ const express = require('express');
 const session = require('express-session');
 
 const {
-  redirectToAdvs, renderAdvs, createAdvs, editAdv, deleteAdv, renderFormNewAdvs, renderFormEditAdvs, renderAdv,
+  redirectToAdvs, renderAdvs, createAdvs, editAdv, deleteAdv,
+  renderFormNewAdvs, renderFormEditAdvs, renderAdv, renderAdminProfile,
+  updateAdminProfile,
 } = require('../controllers/adminController');
+
 const checkAdminPermissions = require('../middlewares/checkAdminPermissions');
+const checkPassword = require('../middlewares/checkPassword');
 
 const router = express.Router();
 const sessionConfig = require('../configs/adminSession');
@@ -28,5 +32,9 @@ router.route('/advs/:advsId/edit')
 
 router.route('/advs/:advsId')
   .get(renderAdv);
+
+router.route('/profile')
+  .get(renderAdminProfile)
+  .put(checkPassword, updateAdminProfile);
 
 module.exports = router;
