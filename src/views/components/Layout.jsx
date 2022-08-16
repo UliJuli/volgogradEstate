@@ -3,7 +3,7 @@ const React = require('react');
 const Header = require('./Header');
 const Footer = require('./Footer');
 
-module.exports = function Layout({ children, title }) {
+module.exports = function Layout({ children, title, user, admin }) {
   return (
     <html lang="en">
       <head>
@@ -25,7 +25,7 @@ module.exports = function Layout({ children, title }) {
         <title>{title}</title>
       </head>
       <body>
-        <Header />
+        <Header user={user} admin={admin} />
         <main id="main-container">
           {children}
         </main>
