@@ -30,10 +30,11 @@ app.use(logInSessionWrapper);
 
 // * <-
 
-
 // * -> put here your routers
 const mainRouter = require('./src/routes/mainRouter');
+const adminRouter = require('./src/routes/adminRouter');
 
+app.use('/admin', adminRouter);
 app.use('/', mainRouter);
 // * <-
 
@@ -50,7 +51,6 @@ const commonErorHandler = require('./src/middlewares/commonErorHandler');
 app.use(commonErorHandler);
 
 // * <-
-
 
 const dbConnectionCheck = require('./db/dbConnectionCheck');
 

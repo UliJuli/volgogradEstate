@@ -15,6 +15,10 @@ PROD_PORT = 80 #Production port
 SESSION_SECRET_USER = some_secret
 SESSION_USER_ALIVE = 864000000
 
+SESSION_ADMIN_SECRET = some_secret2
+SESSION_ADMIN_ALIVE = 86400000
+
+
 #DB CONFIG FOR DEVELOPMENT
 #..................................
 DEV_DB_HOST     = localhost 
