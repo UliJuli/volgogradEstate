@@ -30,10 +30,11 @@ app.use(logInSessionWrapper);
 
 // * <-
 
-
 // * -> put here your routers
 const mainRouter = require('./src/routes/mainRouter');
+const adminRouter = require('./src/routes/adminRouter');
 
+app.use('/admin', adminRouter);
 const userRegRoutes = require('./src/routes/userRegRoutes'); // Роуты на регистрацию
 const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты на Логин
 
@@ -64,7 +65,6 @@ const commonErorHandler = require('./src/middlewares/commonErorHandler');
 app.use(commonErorHandler);
 
 // * <-
-
 
 const dbConnectionCheck = require('./db/dbConnectionCheck');
 
