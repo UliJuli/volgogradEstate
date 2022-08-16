@@ -33,8 +33,10 @@ app.use(logInSessionWrapper);
 
 // * -> put here your routers
 const mainRouter = require('./src/routes/mainRouter');
-const userRegRoutes = require('./src/routes/userRegRoutes');
+const userRegRoutes = require('./src/routes/userRegRoutes'); // Роуты на регистрацию
+const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты на Логин
 
+app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
 app.use('/', userRegRoutes);
 // * <-
