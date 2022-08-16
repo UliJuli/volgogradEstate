@@ -5,7 +5,7 @@ const ReactDOMServer = require('react-dom/server');
 
 const renderTemplate = (_reactEl, props, res) => {
   const { title } = res.locals;
-  const reactEl = React.createElement(_reactEl, { ...props, title});
+  const reactEl = React.createElement(_reactEl, { ...props, title });
   const html = ReactDOMServer.renderToStaticMarkup(reactEl);
   res.write('<!DOCTYPE html>');
   res.end(html);
