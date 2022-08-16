@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "if [[ $NODE_ENV == 'production' ]]; then node ./app.js; else nodemon ./app.js --ext js,jsx; fi",
+    "start": "if [[ $NODE_ENV == 'production' ]]; then node ./app.js; else nodemon ./app.js --ignore sessions --ext js,jsx; fi",
     "initdb": "npx sequelize db:create\nnpx sequelize-cli db:migrate:undo:all\nnpx sequelize-cli db:migrate\nnpx sequelize-cli db:seed:all\n"
   },
   "dependencies": {
