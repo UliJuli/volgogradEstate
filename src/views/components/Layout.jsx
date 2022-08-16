@@ -4,7 +4,9 @@ const Header = require('./Header');
 const Footer = require('./Footer');
 const SvgIcons = require('./SvgIcons');
 
-module.exports = function Layout({ children, title }) {
+module.exports = function Layout({
+  children, title, user, admin,
+}) {
   return (
     <html lang="en">
       <head>
@@ -27,7 +29,7 @@ module.exports = function Layout({ children, title }) {
       </head>
       <body>
         <SvgIcons />
-        <Header />
+        <Header user={user} admin={admin} />
         <main id="main-container">
           {children}
         </main>
