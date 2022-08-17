@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function AdvsEditCreate({ title }) {
+module.exports = function AdvsEditCreate({ title, allCategories }) {
   return (
     <Layout title={title}>
       <form
@@ -18,13 +18,14 @@ module.exports = function AdvsEditCreate({ title }) {
         </div>
         <div className="mb-3">
           <label htmlFor="formFileMultiple" className="form-label">Для загрузки нескольких фото удерживайте ctrl при выборе файлов:</label>
-          <input name="files" className="form-control" type="file" id="formFileMultiple" multiple />
+          <input name="files" className="form-control" type="file" id="formFileMultiple" />
         </div>
         <select className="form-select" aria-label="Default select example">
           <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          {allCategories.map((category) => (
+            <option key={category.id}>{category.name}</option>
+          ))}
+          {/* <option value="3">Three</option> */}
         </select>
         <button type="submit" className="btn btn-primary">
           Изменить/Создать

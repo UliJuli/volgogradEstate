@@ -28,3 +28,15 @@
   align-items: baseline;
   flex-direction: column;
 }
+
+.text-onFullPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-onFullPage {
+display: flex;
+justify-content: space-around;
+}
