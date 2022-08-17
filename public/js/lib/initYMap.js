@@ -32,12 +32,21 @@ function initYMap() {
 function addNewObjects(_callBack) {
   let eventListnerId;
   const callBack = _callBack;
-  const objectsOnMap = []; // <- [1,2,3,4]
+  const objectsOnMap = {
+    type: 'FeatureCollection',
+    features: [],
+  };
+  let clearMap;
   return async function (objects) {
     await this.isInited;
-    objectsOnMap.push(...objects);
+    if (!clearMap) clearMap = this.map.geoObjects;
+    objectsOnMap.features.push(...objects);
+
+    this.map.geoObjects = clearMap;
+
     const obj = ymaps.geoQuery(objectsOnMap);
     this.map.geoObjects.add(obj.clusterize());
+    console.log('~ this.map.geoObjects', this.map.geoObjects.getMap());
 
     const eventListner = this.map.events.add('boundschange', () => {
       const visibleObjects = obj.searchInside(this.map);
