@@ -9,7 +9,7 @@ class AdvComponent extends React.PureComponent {
       isForClient,
     } = this.props;
     return (
-      <div className="main-container" key={id}>
+      <div className="el-container" key={id}>
         <div className="verical-container">
           <img src="#" alt="photo" />
           <h6>{title}</h6>
