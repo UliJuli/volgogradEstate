@@ -5,7 +5,7 @@ const Layout = require('../components/Layout');
 const FilterForAdvs = require('../components/FilterForAdvs');
 const AdvsDrawer = require('../lib/AdvsDrawer');
 
-module.exports = function Main({ user, rooms }) {
+module.exports = function Main({ user, advs }) {
   return (
     <Layout user={user}>
       <div className="container">
@@ -16,7 +16,7 @@ module.exports = function Main({ user, rooms }) {
               <FilterForAdvs />
             </div>
             <div className="col-8">
-              <AdvsDrawer rooms={rooms} isForClient />
+              <AdvsDrawer advs={advs} isForClient />
             </div>
           </div>
         </div>
