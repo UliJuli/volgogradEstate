@@ -44,14 +44,10 @@ const userLogin = async (req, res) => {
 
 const logOut = (req, res) => {
   try {
-    if (req.session.user) {
-      req.session.destroy(() => {
-        res.clearCookie('loginInfo');
-        res.redirect('/');
-      });
-    } else {
-      res.redirect('/login');
-    }
+    req.session.destroy(() => {
+      res.clearCookie('loginInfo');
+      res.redirect('/');
+    });
   } catch (error) {
     res.send(`Error ------> ${error}`);
   }

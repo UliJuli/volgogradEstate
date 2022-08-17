@@ -5,9 +5,11 @@ const Layout = require('./Layout');
 
 class AdminPageDataContainer extends React.PureComponent {
   render() {
-    const { children, title } = this.props;
+    const {
+      children, title, admin, user,
+    } = this.props;
     return (
-      <Layout title={title}>
+      <Layout title={title} admin={admin} user={user}>
         <div className="container-fluid">
           <div className="row flex-nowrap">
             <AdminPageNavBar />

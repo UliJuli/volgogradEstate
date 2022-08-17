@@ -28,3 +28,11 @@
   align-items: baseline;
   flex-direction: column;
 }
+
+
+.dropdown-menu {
+  position: absolute !important;
+  left: unset !important;
+  margin-top: .8rem !important;
+  right: 0;
+}
