@@ -5,11 +5,11 @@ class Header extends React.PureComponent {
     const { user, admin } = this.props;
     return (
       <header id="header">
-        <div className="logo-container">
-          <img className="logo-img" src="img/IMG_1829.png" alt="" />
-        </div>
         <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid">
+            <div className="logo-container">
+              <img className="logo-img" src="img/IMG_1829.png" alt="" />
+            </div>
             <a className="navbar-brand" href="#">Navbar</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />
@@ -17,10 +17,10 @@ class Header extends React.PureComponent {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">Home</a>
+                  <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Category</a>
+                  <a className="nav-link" href="/">Category</a>
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
@@ -28,19 +28,19 @@ class Header extends React.PureComponent {
                       Account
                     </button>
                     <ul className="dropdown-menu">
-                      {user && (<><li><a className="dropdown-item" href="#">wishlist</a></li><li><a className="dropdown-item" href="#">profile</a></li></>)}
+                      {user && (<><li><a className="dropdown-item" href="/">wishlist</a></li><li><a className="dropdown-item" href="/profile">profile</a></li></>)}
                       {admin && <li><a className="dropdown-item" href="#">advs</a></li>}
                     </ul>
                   </div>
                 </li>
                 {!user && (
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Login</a>
+                  <a className="nav-link" href="/login">Login</a>
                 </li>
                 )}
                 {user && (
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Logout</a>
+                  <a className="nav-link" href="/logout">Logout</a>
                 </li>
                 )}
               </ul>

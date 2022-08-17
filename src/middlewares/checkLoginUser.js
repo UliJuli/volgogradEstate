@@ -4,8 +4,8 @@ const ErrorPage = require('../views/pages/ErrorPage');
 const { User } = require('../../db/models');
 
 const checkLoginUser = async (req, res, next) => {
-  const user = req.session.newUser;
-  const userDb = await User.findOne({ where: { email: user } });
+  const { user } = res.locals;
+  const userDb = await User.findOne({ where: { email: user.email } });
   if (userDb) {
     next();
   } else {

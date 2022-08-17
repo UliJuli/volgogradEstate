@@ -23,10 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 // * -> put here your commonMiddlewares
 
 const initLocals = require('./src/middlewares/initLocals');
-const logInSessionWrapper = require('./src/middlewares/logInSessionHandler');
+const logInSessionHandler = require('./src/middlewares/logInSessionHandler');
 
 app.use(initLocals);
-app.use(logInSessionWrapper);
+app.use(logInSessionHandler);
 
 // * <-
 
@@ -44,20 +44,25 @@ const advsEditCreateRoutes = require('./src/routes/advsEditCreateRoutes'); // Р
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
+const adsvMapRouter = require('./src/routes/adsvMapRouter');
+
+app.use('/', advsEditCreateRoutes);
 app.use('/', advsFullRoutes);
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
-app.use('/', advsEditCreateRoutes);
+
+app.use('/adsvOnMap', adsvMapRouter);
+
 app.use('/', userRegRoutes);
 
-app.use('/wishlist', userAccountRouter);
+app.use('/profile', userAccountRouter);
 app.use('/setting', userAccountUpdate);
 
 // * <-
 
 // * -> commonErorHandler
 
-app.use((req, res, next) => {
+app.use((req, res) => { // next
   res.locals.title = 'Something went wrong';
   res.locals.errStatus = 404;
   throw new Error('Page doesn`t exist');

@@ -2,10 +2,9 @@ const React = require('react');
 
 const Layout = require('../components/Layout');
 
-module.exports = function ProfilePage({ advs, login }) {
+module.exports = function ProfilePage({ advs, user }) {
   return (
-    <Layout user={login}>
-      return (
+    <Layout user={user}>
       <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
         <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
           <a href="/" className="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
@@ -42,13 +41,12 @@ module.exports = function ProfilePage({ advs, login }) {
                 <span>{adv.square}/{adv.roomCount}</span>
               </div>
               <a href={`/advs/${adv.id}`} className="entry-title font-2 pad-b-1-4 c-white">More info</a>
-              <a href={`/wishlist/${adv.id}`} className="entry-title font-2 pad-b-1-4 c-white">remove from wishlist</a>
+              <a href={`/wishlist/delete/${adv.id}`} className="entry-title font-2 pad-b-1-4 c-white">remove from wishlist</a>
               <a href="/map" className="entry-title font-2 pad-b-1-4 c-white">on map</a>
             </li>
           ))}
         </ul>
       </main>
-      );
     </Layout>
   );
 };
