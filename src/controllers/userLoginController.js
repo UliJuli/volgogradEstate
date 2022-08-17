@@ -6,7 +6,8 @@ const { User } = require('../../db/models');
 
 const renderLoginRegistr = (req, res) => {
   res.locals.title = 'User Login Page';
-  renderTemplate(UserLoginPage, {}, res);
+  const user = req.session.newUser;
+  renderTemplate(UserLoginPage, { user }, res);
 };
 
 const userLogin = async (req, res) => {
