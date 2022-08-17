@@ -3,7 +3,8 @@ const MainPage = require('../views/pages/MainPage');
 
 const renderMain = async (req, res) => {
   res.locals.title = 'Some project';
-  renderTemplate(MainPage, {}, res);
+  const { user } = res.locals;
+  renderTemplate(MainPage, { user }, res);
 };
 
 module.exports = { renderMain };

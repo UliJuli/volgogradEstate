@@ -1,7 +1,6 @@
 document.getElementById('header').addEventListener('click', (headerEvent) => {
-  headerEvent.preventDefault();
+  
+  // const { pathname } = headerEvent.target;
 
-  const { pathname } = headerEvent.target;
-
-  if (pathname === '/') { mainPage.render(); }
+  // if (pathname === '/') { mainPage.render(); }
 });

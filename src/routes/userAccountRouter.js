@@ -9,22 +9,12 @@ const { User, WishList } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', checkLoginUser, async (req, res) => {
-  const { login } = req.session;
+  const { user } = res.locals;
   try {
-    const user = await User.findOne({ where: { email: login } });
-    const advs = await WishList.findAll({ where: { userId: user.id } });
-    renderTemplate(ProfilePage, { advs, login }, res);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.put('/', async (req, res) => {
-  const { login } = req.session;
-  try {
-    const user = await User.findOne({ where: { email: login } });
-    const advs = await WishList.findAll({ where: { userId: user.id } });
-    renderTemplate(ProfilePage, { advs, login }, res);
+    const userDb = await User.findOne({ where: { email: user.email } });
+    // const advs = await WishList.findAll({ where: { userId: userDb.id } });
+    const advs = [1, 2, 3, 4, 5, 6, 7, 8]
+    renderTemplate(ProfilePage, { advs, user }, res);
   } catch (error) {
     console.log(error);
   }

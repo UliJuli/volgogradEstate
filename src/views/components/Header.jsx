@@ -20,7 +20,7 @@ class Header extends React.PureComponent {
                   <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Category</a>
+                  <a className="nav-link" href="/">Category</a>
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
@@ -28,7 +28,7 @@ class Header extends React.PureComponent {
                       Account
                     </button>
                     <ul className="dropdown-menu">
-                      {user && (<><li><a className="dropdown-item" href="/wishlist">wishlist</a></li><li><a className="dropdown-item" href="/setting">profile</a></li></>)}
+                      {user && (<><li><a className="dropdown-item" href="/">wishlist</a></li><li><a className="dropdown-item" href="/profile">profile</a></li></>)}
                       {admin && <li><a className="dropdown-item" href="#">advs</a></li>}
                     </ul>
                   </div>
