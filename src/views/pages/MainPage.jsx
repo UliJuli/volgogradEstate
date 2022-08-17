@@ -61,7 +61,7 @@ module.exports = function Main({ user, rooms }) {
                     <p className="price">{el.price}</p>
                     <p className="square">{el.square}</p>
                     <a href="#">Подробнее</a>
-                    <button type="button" className="btn btn-wishes">В избранное</button>
+                    <button type="button" className="btn btn-success">В избранное</button>
                     <a href="#">На карте</a>
 
                   </div>
