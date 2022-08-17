@@ -1,6 +1,7 @@
-document.getElementById('header').addEventListener('click', (headerEvent) => {
-  
-  // const { pathname } = headerEvent.target;
+// document.getElementById('header').addEventListener('click', (headerEvent) => {
+//   headerEvent.preventDefault();
 
-  // if (pathname === '/') { mainPage.render(); }
-});
+//   const { pathname } = headerEvent.target;
+
+//   if (pathname === '/') { mainPage.render(); }
+// });
