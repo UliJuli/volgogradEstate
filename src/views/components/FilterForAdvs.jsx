@@ -4,12 +4,14 @@ class FilterForAdvs extends React.PureComponent {
   render() {
     return (
       <div>
-        <select className="form-select" aria-label="Default select example">
-          <option selected>Категория</option>
-          <option value="1">Квартира</option>
-          <option value="2">Комната</option>
-          <option value="3">Дом</option>
-        </select>
+        <div className="filter-category">
+          <p>Категория:</p>
+          <select className="form-select" aria-label="Default select example">
+            <option selected>Квартира</option>
+            <option value="1">Комната</option>
+            <option value="2">Дом</option>
+          </select>
+        </div>
         <div className="checkbox form-check form-check-inline">
           <h8>Количество комнат :</h8>
           <div className="boxcheck">
