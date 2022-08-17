@@ -3,7 +3,7 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function Main({ user, rooms }) {
+module.exports = function Main({ user, rooms, wishs }) {
   return (
     <Layout user={user}>
       <div className="container">
@@ -48,7 +48,7 @@ module.exports = function Main({ user, rooms }) {
                 </div>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-8 advs-container">
 
               {rooms.map((el) => (
                 <div className="main-container" key={el.id}>
@@ -61,7 +61,9 @@ module.exports = function Main({ user, rooms }) {
                     <p className="price">{el.price}</p>
                     <p className="square">{el.square}</p>
                     <a href="#">Подробнее</a>
-                    <button type="button" className="btn btn-wishes">В избранное</button>
+                    {wishs?.wishlist.includes(el.id) 
+                    ? <button name={el.id} type="button" class="btn btn-danger btn-wishes">Добавлено в избранное</button> 
+                    : <button name={el.id} type="button" className="btn btn-wishes">В избранное</button>}
                     <a href="#">На карте</a>
 
                   </div>
@@ -71,6 +73,7 @@ module.exports = function Main({ user, rooms }) {
           </div>
         </div>
       </div>
+      <script src="/js/client.js" />
     </Layout>
   );
 };

@@ -46,7 +46,7 @@ app.use('/', mainRouter);
 
 app.use('/', userRegRoutes);
 
-app.use('/profile', userAccountRouter);
+app.use('/wishlist', userAccountRouter);
 app.use('/setting', userAccountUpdate);
 
 // * <-
