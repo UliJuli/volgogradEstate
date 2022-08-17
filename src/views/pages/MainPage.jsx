@@ -5,7 +5,7 @@ const Layout = require('../components/Layout');
 const FilterForAdvs = require('../components/FilterForAdvs');
 const AdvsDrawer = require('../lib/AdvsDrawer');
 
-module.exports = function Main({ user, rooms }) {
+module.exports = function Main({ user, advs, wishs }) {
   return (
     <Layout user={user}>
       <div className="container">
@@ -15,12 +15,34 @@ module.exports = function Main({ user, rooms }) {
             <div className="col-4">
               <FilterForAdvs />
             </div>
+            <div className="col-8 advs-container">
+
+              {rooms.map((el) => (
+                <div className="main-container" key={el.id}>
+                  <div className="verical-container">
+                    <img src="#" alt="photo" />
+                    <h6>{el.title}</h6>
+                  </div>
+                  <div className="gorisont-container">
+                    <p className="category">{el.category}</p>
+                    <p className="price">{el.price}</p>
+                    <p className="square">{el.square}</p>
+                    <a href="#">Подробнее</a>
+                    {wishs?.wishlist.includes(el.id) 
+                    ? <button name={el.id} type="button" class="btn btn-danger btn-wishes">Добавлено в избранное</button> 
+                    : <button name={el.id} type="button" className="btn btn-wishes">В избранное</button>}
+                    <a href="#">На карте</a>
+
+                  </div>
+                </div>
+              ))}
             <div className="col-8">
-              <AdvsDrawer rooms={rooms} isForClient />
+              <AdvsDrawer advs={advs} isForClient />
             </div>
           </div>
         </div>
       </div>
+      <script src="/js/client.js" />
     </Layout>
   );
 };
