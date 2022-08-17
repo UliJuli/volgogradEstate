@@ -3,7 +3,7 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function Main({ title, user, rooms }) {
+module.exports = function Main({ user, rooms }) {
   return (
     <Layout user={user}>
       <div className="container">
@@ -15,6 +15,7 @@ module.exports = function Main({ title, user, rooms }) {
                 <option selected>Категория</option>
                 <option value="1">Квартира</option>
                 <option value="2">Комната</option>
+                <option value="3">Дом</option>
               </select>
               <div className="checkbox form-check form-check-inline">
                 <h8>Количество комнат :</h8>
