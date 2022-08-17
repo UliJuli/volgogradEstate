@@ -6,8 +6,7 @@ const { User } = require('../../db/models');
 
 const renderLoginRegistr = (req, res) => {
   res.locals.title = 'User Login Page';
-  const user = req.session.newUser;
-  renderTemplate(UserLoginPage, { user }, res);
+  renderTemplate(UserLoginPage, {}, res);
 };
 
 const userLogin = async (req, res) => {
@@ -30,7 +29,7 @@ const userLogin = async (req, res) => {
 
 const logOut = (req, res) => {
   try {
-    if (req.session.newUser) {
+    if (req.session.user) {
       req.session.destroy(() => {
         res.clearCookie('Cookie');
         res.redirect('/');
