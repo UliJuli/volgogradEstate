@@ -33,7 +33,7 @@ module.exports = function Layout({
       <body>
         <SvgIcons />
         <Header user={user} admin={admin} />
-        <main className="my-3" id="main-container">
+        <main id="main-container">
           {children}
         </main>
         <Footer />
