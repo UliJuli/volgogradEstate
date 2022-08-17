@@ -1,6 +1,7 @@
 const express = require('express');
 
 const renderTemplate = require('../lib/renderTemplate');
+const UserUpdate = require('../views/pages/UserUpdate');
 const ProfilePage = require('../views/pages/ProfilePage');
 const checkPassword = require('../middlewares/checkPassword');
 
@@ -10,7 +11,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    renderTemplate(Registr, { }, res);
+    renderTemplate(UserUpdate, { }, res);
   } catch (error) {
     console.log(error);
   }
