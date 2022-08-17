@@ -1,5 +1,6 @@
 const renderTemplate = require('../lib/renderTemplate');
 const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
+const AdminProfilePage = require('../views/pages/AdminProfilePage');
 
 const { Advertisement } = require('../../db/models');
 
@@ -8,7 +9,6 @@ const redirectToAdvs = async (req, res) => {
 };
 
 const renderAdvs = async (req, res) => {
-  console.log(1);
   const advs = await Advertisement.findAll({ raw: true });
   res.locals.title = 'Some project';
   renderTemplate(AdminAdvsPage, { advs }, res);
@@ -46,12 +46,22 @@ const renderAdv = async (req, res) => {
 
 const renderAdminProfile = async (req, res) => {
   res.locals.title = 'Some project';
-  res.sendStatus(200);
+  const { admin } = res.locals;
+  console.log('~ admin', admin);
+  renderTemplate(AdminProfilePage, { profileData: admin }, res);
 };
 
 const updateAdminProfile = async (req, res) => {
-  res.locals.title = 'Some project';
-  res.sendStatus(200);
+  try {
+    // const admin
+    // const {
+    //   firstName, lastName, phoneNumber, email,
+    // } = req.body;
+
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
 };
 
 module.exports = {
