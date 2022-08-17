@@ -38,11 +38,13 @@ app.use('/admin', adminRouter);
 const userRegRoutes = require('./src/routes/userRegRoutes'); // Роуты на регистрацию
 const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты на Логин
 
+const advsFullRoutes = require('./src/routes/advsFullRoutes'); // Роут на фулл страницу объявления
 const advsEditCreateRoutes = require('./src/routes/advsEditCreateRoutes'); // Роут на редактирование, создание объявления
 
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
+app.use('/', advsFullRoutes);
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
 app.use('/', advsEditCreateRoutes);

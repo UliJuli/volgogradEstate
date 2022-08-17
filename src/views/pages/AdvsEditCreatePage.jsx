@@ -4,7 +4,10 @@ const Layout = require('../components/Layout');
 module.exports = function AdvsEditCreate({ title }) {
   return (
     <Layout title={title}>
-      <form action="/advs_edit" method="POST">
+      <form
+        action="/advs_edit"
+        method="POST"
+      >
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">Название</label>
           <input name="title" type="text" className="form-control" id="exampleFormControlInput1" />
@@ -23,7 +26,9 @@ module.exports = function AdvsEditCreate({ title }) {
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
-        <button type="submit" className="btn btn-primary">Изменить/Создать</button>
+        <button type="submit" className="btn btn-primary">
+          Изменить/Создать
+        </button>
       </form>
       {/* <a href="/user_registration" className="btn btn-primary">Создать/Изменить</a> */}
     </Layout>
