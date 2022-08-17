@@ -1,11 +1,16 @@
 const React = require('react');
 const AdminPageDataContainer = require('../components/AdminPageDataContainer');
+const FilterForAdvs = require('../components/FilterForAdvs');
+const AdvsDrawer = require('../lib/AdvsDrawer');
 
-module.exports = function AdminAdvsPage({ title }) {
+module.exports = function AdminAdvsPage({ title, rooms }) {
   return (
     <AdminPageDataContainer title={title}>
       <div className="container">
-        SomeData -> ALL ADVS with filter ....
+        <div className="d-flex flex-column">
+          <FilterForAdvs />
+          <AdvsDrawer rooms={rooms} isForClient={false} />
+        </div>
       </div>
     </AdminPageDataContainer>
   );

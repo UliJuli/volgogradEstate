@@ -6,6 +6,7 @@ class AdvComponent extends React.PureComponent {
       adv: {
         id, title, category, price, square,
       },
+      isForClient,
     } = this.props;
     return (
       <div className="main-container" key={id}>

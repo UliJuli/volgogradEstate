@@ -16,7 +16,7 @@ module.exports = function Main({ user, rooms }) {
               <FilterForAdvs />
             </div>
             <div className="col-8">
-              <AdvsDrawer rooms={rooms} />
+              <AdvsDrawer rooms={rooms} isForClient />
             </div>
           </div>
         </div>
