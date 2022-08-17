@@ -1,15 +1,13 @@
 const React = require('react');
 const AdminPageDataContainer = require('../components/AdminPageDataContainer');
-const FilterForAdvs = require('../components/FilterForAdvs');
-const AdvsDrawer = require('../lib/AdvsDrawer');
+const ProfileForm = require('../components/ProfileForm');
 
-module.exports = function AdminAdvsPage({ title, advs }) {
+module.exports = function AdminAdvsPage({ title, profileData }) {
   return (
     <AdminPageDataContainer title={title}>
       <div className="container">
         <div className="d-flex flex-column">
-          <FilterForAdvs />
-          <AdvsDrawer advs={advs} isForClient={false} />
+          <ProfileForm isForUser={false} profileData={profileData} />
         </div>
       </div>
     </AdminPageDataContainer>

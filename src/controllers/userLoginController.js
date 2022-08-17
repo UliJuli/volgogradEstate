@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const renderTemplate = require('../lib/renderTemplate');
 
 const UserLoginPage = require('../views/pages/UserLoginPage');
-const { User } = require('../../db/models');
+const { User, Admin } = require('../../db/models');
 
 const renderLoginRegistr = (req, res) => {
   res.locals.title = 'User Login Page';
@@ -13,15 +13,30 @@ const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
-    const passwordCheck = await bcrypt.compare(password, user.password);
-    if (passwordCheck) {
-      req.session.user = user;
-      req.session.save(() => {
-        res.redirect('/');
-      });
-      return;
+    if (user) {
+      const passwordCheck = await bcrypt.compare(password, user.password);
+      if (passwordCheck) {
+        req.session.user = user;
+        req.session.save(() => {
+          res.redirect('/');
+        });
+        return;
+      }
     }
-    res.redirect('/login');
+
+    const admin = await Admin.findOne({ where: { email } });
+    if (admin) {
+      const passwordCheck = await bcrypt.compare(password, admin.password);
+      if (passwordCheck) {
+        req.session.admin = admin;
+        req.session.save(() => {
+          res.redirect('/admin');
+        });
+        return;
+      }
+    }
+
+    res.status(400).redirect('/login');
   } catch (error) {
     console.log(error);
   }
