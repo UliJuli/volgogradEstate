@@ -7,7 +7,7 @@ const FileStore = require('session-file-store')(session);
 
 const sessionConfig = {
   name: 'loginInfo', // * Название куки
-  store: new FileStore(), // * подключение стора (БД для куки) для хранения
+  store: new FileStore({ path: './sessions/userSessions' }), // * подключение стора (БД для куки) для хранения
   secret: SESSION_SECRET_USER, // * ключ для шифрования куки
   resave: false, // * если true, пересохраняет сессию, даже если она не поменялась
   saveUninitialized: false, // * Если false, куки появляются только при установке req.session

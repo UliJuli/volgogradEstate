@@ -16,11 +16,13 @@ const userLogin = async (req, res) => {
     const user = await User.findOne({ where: { email } });
     const passwordCheck = await bcrypt.compare(password, user.password);
     if (passwordCheck) {
-      req.session.newUser = user.login;
+      req.session.user = user;
       req.session.save(() => {
         res.redirect('/');
       });
-    } res.redirect('/login');
+      return;
+    }
+    res.redirect('/login');
   } catch (error) {
     console.log(error);
   }

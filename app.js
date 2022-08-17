@@ -23,10 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 // * -> put here your commonMiddlewares
 
 const initLocals = require('./src/middlewares/initLocals');
-const logInSessionWrapper = require('./src/middlewares/logInSessionHandler');
+const logInSessionHandler = require('./src/middlewares/logInSessionHandler');
 
 app.use(initLocals);
-app.use(logInSessionWrapper);
+app.use(logInSessionHandler);
 
 // * <-
 
@@ -40,7 +40,6 @@ const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты �
 
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
-
 
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
