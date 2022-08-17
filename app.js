@@ -41,8 +41,12 @@ const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты �
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
+const adsvMapRouter = require('./src/routes/adsvMapRouter');
+
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
+
+app.use('/adsvOnMap', adsvMapRouter);
 
 app.use('/', userRegRoutes);
 
