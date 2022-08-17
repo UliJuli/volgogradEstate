@@ -1,10 +1,10 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function UserUpdate({ title }) {
+module.exports = function UserUpdate({ user }) {
   return (
-    <Layout title={title}>
-      <form action="/setting" method="PUT">
+    <Layout user={user}>
+      <form action="/setting" method="POST">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>
           <input name="firstName" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -16,10 +16,6 @@ module.exports = function UserUpdate({ title }) {
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">Номер телефона</label>
           <input name="phoneNumber" type="tel" className="form-control" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Адрес электронной почты</label>
-          <input name="email" type="email" className="form-control" />
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">Пароль</label>
