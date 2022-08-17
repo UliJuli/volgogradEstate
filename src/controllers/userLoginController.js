@@ -30,7 +30,7 @@ const userLogin = async (req, res) => {
       if (passwordCheck) {
         req.session.admin = admin;
         req.session.save(() => {
-          res.redirect('/');
+          res.redirect('/admin');
         });
         return;
       }

@@ -1,13 +1,17 @@
 const renderTemplate = require('../lib/renderTemplate');
 const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
 
+const { Advertisement } = require('../../db/models');
+
 const redirectToAdvs = async (req, res) => {
   res.redirect('/admin/advs');
 };
 
 const renderAdvs = async (req, res) => {
+  console.log(1);
+  const advs = await Advertisement.findAll({ raw: true });
   res.locals.title = 'Some project';
-  renderTemplate(AdminAdvsPage, {}, res);
+  renderTemplate(AdminAdvsPage, { advs }, res);
 };
 
 const createAdvs = async (req, res) => {
