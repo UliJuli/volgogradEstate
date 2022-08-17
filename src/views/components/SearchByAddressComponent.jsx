@@ -5,7 +5,7 @@ class SearchByAddressComponent extends React.PureComponent {
     return (
       <div className="input-group">
         <div className="form-floating">
-          <input name="search" type="text" className="form-control" id="search-input" placeholder="Поиск на карте...." value="" />
+          <input name="search" type="text" className="form-control" id="search-input" placeholder="Поиск на карте...." defaultValue="" />
           <label htmlFor="search-input">Поиск на карте....</label>
         </div>
 
