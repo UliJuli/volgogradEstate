@@ -50,6 +50,7 @@ const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
 const adsvMapRouter = require('./src/routes/adsvMapRouter');
+const filterRouter = require('./src/routes/filterRouter');
 
 app.use('/', advsEditCreateRoutes);
 app.use('/', advsFullRoutes);
@@ -62,6 +63,7 @@ app.use('/', userRegRoutes);
 
 app.use('/user', userAccountRouter);
 app.use('/user', userAccountUpdate);
+app.use('/filter', filterRouter);
 
 // * <-
 
