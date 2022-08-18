@@ -1,5 +1,11 @@
 yMap.isInited.then(() => {
-  yMap.addNewObjects([
+  function callBack() {
+    console.log(yMap.visibleObjects);
+  }
+
+  addNewObjsInMap(yMap, [
+  // ])
+  // yMap.addNewObjects([
     {
       type: 'Feature',
       id: 0,
@@ -30,4 +36,6 @@ yMap.isInited.then(() => {
       },
     },
   ]);
+  getObjInMapArea(yMap, callBack);
+  dynamicBalloonWraper(yMap);
 });
