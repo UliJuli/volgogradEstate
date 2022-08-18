@@ -1,5 +1,5 @@
 const express = require('express');
-const session = require('express-session');
+// const session = require('express-session');
 
 const {
   redirectToAdvs, renderAdvs, createAdvs, editAdv, deleteAdv,
@@ -11,9 +11,9 @@ const checkAdminPermissions = require('../middlewares/checkAdminPermissions');
 const checkPassword = require('../middlewares/checkPassword');
 
 const router = express.Router();
-const sessionConfig = require('../configs/adminSession');
+// const sessionConfig = require('../configs/adminSession');
 
-router.use(session(sessionConfig));
+// router.use(session(sessionConfig));
 
 router.use(checkAdminPermissions);
 

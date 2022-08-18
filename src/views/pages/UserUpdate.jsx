@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function UserUpdate({ user }) {
+module.exports = function UserUpdate({ user, admin }) {
   return (
-    <Layout user={user}>
+    <Layout user={user} admin={admin}>
       <form action="/setting" method="POST">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>
