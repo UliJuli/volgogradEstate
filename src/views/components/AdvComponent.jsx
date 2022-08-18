@@ -21,13 +21,13 @@ class AdvComponent extends React.PureComponent {
           </div>
           <div className="btn-group">
             <div className="some-btn">
-              <button type="button" className="btn btn-info">Подробнее</button>
+              <button type="button" className="btn btn-info d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#moreInfoAdvs" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></button>
             </div>
             <div className="some-btn">
-              <button type="button" className="btn btn-success btn-wishes">В избранное</button>
+              <button type="button" className="btn btn-success btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></button>
             </div>
             <div className="some-btn">
-              <button type="button" className="btn btn-warning">На карте</button>
+              <button type="button" className="btn btn-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#maps" /></svg><span className="ms-1 d-none d-sm-inline"> На карте</span></button>
             </div>
           </div>
         </div>
