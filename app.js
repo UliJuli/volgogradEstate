@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
+const fileUpload = require('express-fileupload'); // для добавления файлов
 const session = require('express-session');
 
 const app = express();
@@ -11,12 +12,17 @@ const sessionConfig = require('./src/configs/userSession');
 
 app.use(session(sessionConfig));
 
+app.use(fileUpload({ // для добавления файлов
+  createParentPath: true,
+}));
+
 const PORT = process.env.NODE_ENV === 'production'
   ? process.env.PROD_PORT
   : process.env.DEV_PORT;
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(express.static('uploads'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 

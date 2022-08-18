@@ -7,6 +7,7 @@ module.exports = function AdvsEditCreate({ title, allCategories }) {
       <form
         action="/advs_edit"
         method="POST"
+        encType="multipart/form-data"
       >
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">Название</label>
@@ -17,8 +18,8 @@ module.exports = function AdvsEditCreate({ title, allCategories }) {
           <textarea name="desk" className="form-control" id="exampleFormControlTextarea1" rows="3" />
         </div>
         <div className="mb-3">
-          <label htmlFor="formFileMultiple" className="form-label">Для загрузки нескольких фото удерживайте ctrl при выборе файлов:</label>
-          <input name="files" className="form-control" type="file" id="formFileMultiple" />
+          <label htmlFor="formFileMultiple" className="form-label">Файлы загрузки</label>
+          <input name="photos" className="form-control" type="file" id="formFileMultiple" multiple />
         </div>
         <select className="form-select" aria-label="Default select example">
           <option selected>Open this select menu</option>
