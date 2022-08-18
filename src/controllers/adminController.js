@@ -1,6 +1,6 @@
 const renderTemplate = require('../lib/renderTemplate');
 const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
-const AdminProfilePage = require('../views/pages/AdminProfilePage');
+const ProfilePage = require('../views/pages/ProfilePage');
 
 const { Advertisement, Admin } = require('../../db/models');
 
@@ -47,7 +47,7 @@ const renderAdv = async (req, res) => {
 const renderAdminProfile = async (req, res) => {
   res.locals.title = 'Some project';
   const { admin } = res.locals;
-  renderTemplate(AdminProfilePage, { profileData: admin }, res);
+  renderTemplate(ProfilePage, { profileData: admin }, res);
 };
 
 const updateAdminProfile = async (req, res) => {

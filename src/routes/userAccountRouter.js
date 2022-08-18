@@ -1,7 +1,7 @@
 const express = require('express');
 const renderTemplate = require('../lib/renderTemplate');
 const checkLoginUser = require('../middlewares/checkLoginUser');
-const ProfilePage = require('../views/pages/ProfilePage');
+const WishListPage = require('../views/pages/WishListPage');
 
 const {
   User, Wishlist, Advertisement, Category,
@@ -9,15 +9,21 @@ const {
 
 const router = express.Router();
 
-router.get('/', checkLoginUser, async (req, res) => {
-  const { user } = res.locals;
+router.use(checkLoginUser);
+
+router.get('/', async (req, res) => res.redirect('/user/wishlist'));
+
+router.get('/wishlist', async (req, res) => {
   try {
-    const advs = await Advertisement.findAll({ 
-      include: [{ model: Wishlist, where: { userId: user.id } }, { model: Category }], raw: true });
+    const { user } = res.locals;
+    const advs = await Advertisement.findAll({
+      include: [{ model: Wishlist, where: { userId: user.id } }, { model: Category }],
+      raw: true,
+    });
     console.log(advs);
-    renderTemplate(ProfilePage, { advs, user }, res);
+    renderTemplate(WishListPage, { advs }, res);
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 
@@ -25,10 +31,10 @@ router.post('/delete/:id', async (req, res) => {
   const { id } = req.params;
   const { user } = res.locals;
   try {
-    await Wishlist.destroy({ where: { id} });
+    await Wishlist.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 
@@ -51,7 +57,7 @@ router.post('/add/:id', async (req, res) => {
       res.sendStatus(300);
     }
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 
