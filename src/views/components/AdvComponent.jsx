@@ -4,9 +4,9 @@ class AdvComponent extends React.PureComponent {
   render() {
     const {
       adv: {
-        id, title, category, price, square,
+        id, title, price, square,
       },
-      isForClient,
+      isForClient, wishs
     } = this.props;
     return (
       <div className="el-container" key={id}>
@@ -24,7 +24,7 @@ class AdvComponent extends React.PureComponent {
               <button type="button" className="btn btn-info d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#moreInfoAdvs" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></button>
             </div>
             <div className="some-btn">
-              <button type="button" className="btn btn-success btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></button>
+              <button type="button" className="btn btn-success btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline">В избранное</span></button>
             </div>
             <div className="some-btn">
               <button type="button" className="btn btn-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#maps" /></svg><span className="ms-1 d-none d-sm-inline"> На карте</span></button>
