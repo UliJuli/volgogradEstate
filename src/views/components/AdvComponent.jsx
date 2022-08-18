@@ -6,15 +6,26 @@ class AdvComponent extends React.PureComponent {
       adv: {
         id, title, price, square, createdAt,
       },
-      isForClient, wishs,
+      adv, isForClient, wishs,
     } = this.props;
     return (
       <div id={id} className="card text-white card-has-bg click-col" style={{ backgroundImage: "url('https://source.unsplash.com/600x900/?tech,street')" }}>
         <img className="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?" />
         <div className="card-img-overlay d-flex flex-column">
           <div className="card-body">
+            <h4 className="card-title mt-0 ">{adv['Category.name']}</h4>
             <h4 className="card-title mt-0 "><a className="text-white text-decoration-none" herf="#">{title}</a></h4>
-            <small><i className="far fa-clock" /> {createdAt.toString()}</small>
+            <small><i className="far fa-clock" />от {createdAt.toString().slice(4, 15)}</small>
+            <table className="table table-borderless table-sm" style={{ color: 'inherit' }}>
+              <tr>
+                <td className="p-0">Цена:</td>
+                <td className="p-0">{`${price} руб.`}</td>
+              </tr>
+              <tr>
+                <td className="p-0">Площадь:</td>
+                <td className="p-0">{`${square} м2.`}</td>
+              </tr>
+            </table>
           </div>
           <div className="card-footer">
             <div className="media d-flex flex-row" style={{ gap: '1.5rem' }}>
