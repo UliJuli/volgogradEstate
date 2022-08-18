@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
+const fileUpload = require('express-fileupload'); // для добавления файлов
 const session = require('express-session');
 
 const app = express();
@@ -11,12 +12,17 @@ const sessionConfig = require('./src/configs/userSession');
 
 app.use(session(sessionConfig));
 
+app.use(fileUpload({ // для добавления файлов
+  createParentPath: true,
+}));
+
 const PORT = process.env.NODE_ENV === 'production'
   ? process.env.PROD_PORT
   : process.env.DEV_PORT;
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(express.static('uploads'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
@@ -37,11 +43,16 @@ app.use('/admin', adminRouter);
 const userRegRoutes = require('./src/routes/userRegRoutes'); // Роуты на регистрацию
 const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты на Логин
 
+const advsFullRoutes = require('./src/routes/advsFullRoutes'); // Роут на фулл страницу объявления
+const advsEditCreateRoutes = require('./src/routes/advsEditCreateRoutes'); // Роут на редактирование, создание объявления
+
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
 
 const adsvMapRouter = require('./src/routes/adsvMapRouter');
 
+app.use('/', advsEditCreateRoutes);
+app.use('/', advsFullRoutes);
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
 
@@ -56,7 +67,7 @@ app.use('/user', userAccountUpdate);
 
 // * -> commonErorHandler
 
-app.use((req, res, next) => {
+app.use((req, res) => { // next
   res.locals.title = 'Something went wrong';
   res.locals.errStatus = 404;
   throw new Error('Page doesn`t exist');
