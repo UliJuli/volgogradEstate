@@ -1,13 +1,17 @@
 const renderTemplate = require('../lib/renderTemplate');
 const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
+const ProfilePage = require('../views/pages/ProfilePage');
+
+const { Advertisement, Admin } = require('../../db/models');
 
 const redirectToAdvs = async (req, res) => {
   res.redirect('/admin/advs');
 };
 
 const renderAdvs = async (req, res) => {
+  const advs = await Advertisement.findAll({ raw: true });
   res.locals.title = 'Some project';
-  renderTemplate(AdminAdvsPage, {}, res);
+  renderTemplate(AdminAdvsPage, { advs }, res);
 };
 
 const createAdvs = async (req, res) => {
@@ -42,12 +46,30 @@ const renderAdv = async (req, res) => {
 
 const renderAdminProfile = async (req, res) => {
   res.locals.title = 'Some project';
-  res.sendStatus(200);
+  const { admin } = res.locals;
+  renderTemplate(ProfilePage, { profileData: admin }, res);
 };
 
 const updateAdminProfile = async (req, res) => {
-  res.locals.title = 'Some project';
-  res.sendStatus(200);
+  try {
+    const { admin } = res.locals;
+    const {
+      firstName, lastName, phoneNumber, email,
+    } = req.body;
+    const adminToUpdate = await Admin.findByPk(admin.id);
+    const dataToUpdate = {};
+    if (firstName) dataToUpdate.firstName = firstName;
+    if (lastName) dataToUpdate.lastName = lastName;
+    if (phoneNumber) dataToUpdate.phoneNumber = phoneNumber;
+    if (email) dataToUpdate.email = email;
+    await adminToUpdate.update(dataToUpdate);
+    req.session.admin = adminToUpdate;
+    req.session.save(() => {
+      res.sendStatus(200);
+    });
+  } catch (error) {
+    res.sendStatus(500);
+  }
 };
 
 module.exports = {

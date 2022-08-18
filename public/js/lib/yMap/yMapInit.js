@@ -20,6 +20,8 @@ function initYMap() {
 
       yMap.map = myMap;
       yMap.objectManager = objectManager;
+
+      if (!localStorage.viewedAdvs) localStorage.viewedAdvs = [];
       res();
     }
   });

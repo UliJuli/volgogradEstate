@@ -33,7 +33,6 @@ const logInSessionHandler = require('./src/middlewares/logInSessionHandler');
 
 app.use(initLocals);
 app.use(logInSessionHandler);
-
 // * <-
 
 // * -> put here your routers
@@ -61,8 +60,8 @@ app.use('/adsvOnMap', adsvMapRouter);
 
 app.use('/', userRegRoutes);
 
-app.use('/profile', userAccountRouter);
-app.use('/setting', userAccountUpdate);
+app.use('/user', userAccountRouter);
+app.use('/user', userAccountUpdate);
 
 // * <-
 

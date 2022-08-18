@@ -3,10 +3,12 @@ const MainPage = require('../views/pages/MainPage');
 const { Advertisement } = require('../../db/models');
 
 const renderMain = async (req, res) => {
-  const rooms = await Advertisement.findAll();
+  const advs = await Advertisement.findAll({ raw: true });
+
   res.locals.title = 'Some project';
   const { user } = res.locals;
-  renderTemplate(MainPage, { user, rooms }, res);
+  const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];
+  renderTemplate(MainPage, { user, advs, wishs }, res);
 };
 
 module.exports = { renderMain };
