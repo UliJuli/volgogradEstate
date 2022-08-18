@@ -51,7 +51,7 @@ app.use('/adsvOnMap', adsvMapRouter);
 app.use('/', userRegRoutes);
 
 app.use('/user', userAccountRouter);
-app.use('/setting', userAccountUpdate);
+app.use('/user', userAccountUpdate);
 
 // * <-
 

@@ -53,8 +53,16 @@ const renderAdminProfile = async (req, res) => {
 const updateAdminProfile = async (req, res) => {
   try {
     const { admin } = res.locals;
+    const {
+      firstName, lastName, phoneNumber, email,
+    } = req.body;
     const adminToUpdate = await Admin.findByPk(admin.id);
-    await adminToUpdate.update(req.body);
+    const dataToUpdate = {};
+    if (firstName) dataToUpdate.firstName = firstName;
+    if (lastName) dataToUpdate.lastName = lastName;
+    if (phoneNumber) dataToUpdate.phoneNumber = phoneNumber;
+    if (email) dataToUpdate.email = email;
+    await adminToUpdate.update(dataToUpdate);
     req.session.admin = adminToUpdate;
     req.session.save(() => {
       res.sendStatus(200);
