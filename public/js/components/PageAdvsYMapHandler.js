@@ -1,8 +1,4 @@
 yMap.isInited.then(() => {
-  function callBack() {
-    console.log(yMap.visibleObjects);
-  }
-
   addNewObjsInMap(yMap, [
   // ])
   // yMap.addNewObjects([
@@ -38,4 +34,14 @@ yMap.isInited.then(() => {
   ]);
   getObjInMapArea(yMap, callBack);
   dynamicBalloonWraper(yMap);
+
+  const srchOnMapInp = document.getElementById('search-on-map');
+  const srchOnMapBtn = document.getElementById('search-on-map-sbm');
+
+  srchOnMapBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(srchOnMapInp.value);
+    const search = yMap.searchControl.search(srchOnMapInp.value);
+    // search.then(() => { yMap.searchControl.clear(); });
+  });
 });

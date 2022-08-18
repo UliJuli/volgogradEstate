@@ -19,3 +19,7 @@ function checkBalloonsForCookies(balloons) {
     balloon.options.preset = 'islands#yellowDotIcon';
   });
 }
+
+function callBack() {
+  console.log(yMap.visibleObjects);
+}
