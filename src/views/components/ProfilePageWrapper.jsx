@@ -21,6 +21,7 @@ class ProfilePageWrapper extends React.PureComponent {
             </div>
           </div>
         </div>
+        <script src="/js/client2.js" />
       </Layout>
     );
   }

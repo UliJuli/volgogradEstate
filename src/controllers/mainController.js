@@ -7,7 +7,7 @@ const renderMain = async (req, res) => {
 
   res.locals.title = 'Some project';
   const { user } = res.locals;
-  const wishs = user?.id ? res.app.locals.userData[user.id] : [];
+  const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];
   renderTemplate(MainPage, { user, advs, wishs }, res);
 };
 

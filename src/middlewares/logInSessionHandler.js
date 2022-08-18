@@ -1,7 +1,17 @@
-const logInSessionWrapper = (req, res, next) => {
+const { Wishlist } = require('../../db/models');
+
+const logInSessionWrapper = async (req, res, next) => {
   const user = req.session?.user;
   if (user) {
     res.locals.user = user;
+    if (!res.app.locals.userData[user.id]) {
+      res.app.locals.userData[user.id] = {};
+    }
+    if (!res.app.locals.userData[user.id]?.wishlist) {
+      const wishlist = await Wishlist.findAll({ where: { userId: user.id }, raw: true });
+      res.app.locals.userData[user.id].wishlist = wishlist?.map((el) => el.advertisementId);
+      console.log(res.app.locals.userData[user.id].wishlist)
+    }
   }
 
   const admin = req.session?.admin;
