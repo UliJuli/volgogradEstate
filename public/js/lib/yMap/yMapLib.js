@@ -5,9 +5,9 @@ async function loadBalloonData(balloonId) {
 
 function checkBalloonsForCookies(balloons) {
   return balloons.map((balloon) => {
-    const {id} = balloon;
+    const { id } = balloon;
     if (!localStorage.viewedAdvs.includes(id)) return;
 
-    balloon.options.preset = 'islands#yellowDotIcon'
-  }
+    balloon.options.preset = 'islands#yellowDotIcon';
+  });
 }
