@@ -11,8 +11,6 @@ const renderAdvsEditCreate = async (req, res) => {
 };
 
 const createAdvs = async (req, res) => {
-  // console.log('PHOTO', req.files.photo);
-  // const { title, desk, files } = req.body;
   try {
     if (!req.files) {
       res.send({
@@ -20,19 +18,14 @@ const createAdvs = async (req, res) => {
         message: 'No file uploaded',
       });
     } else {
-      console.log('1111', req.files);
-      // Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-      // console.log('777', req.files);
-      // const { photo } = req.files;
       const data = [];
       // console.log("99999", Object.values(req.files));
-      console.log('9999', req.files.photos);
+
       _.forEach(_.keysIn(req.files.photos), (key) => {
         const photo = req.files.photos[key];
-        console.log('photo', photo);
+        // console.log('photo', photo);
         // Use the mv() method to place the file in upload directory (i.e. "uploads")
         photo.mv(`./public/img/flats/${photo.name}`);
-
         // push file details
         data.push({
           name: photo.name,
@@ -41,6 +34,27 @@ const createAdvs = async (req, res) => {
         });
       });
       // send response
+      const photosName = [];
+      for (let i = 0; i < req.files.photos.length; i++) {
+        console.log('После forEacha', req.files.photos[i].name);
+        photosName.push(req.files.photos[i].name);
+      }
+      const {
+        title, description, addressString, addressCoords, price, square, roomCount, category,
+      } = req.body;
+      const findOnDb = await Category.findOne({ row: true, where: { name: category } });
+      const findId = findOnDb.id;
+      const newAdvs = await Advertisement.create({
+        category: findId,
+        title,
+        description,
+        addressString,
+        addressCoords: '55.831903,37.411961',
+        price,
+        photo: photosName.toString(),
+        square,
+        roomCount,
+      });
       res.send({
         status: true,
         message: 'Files are uploaded',
@@ -48,9 +62,19 @@ const createAdvs = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 };
 
-module.exports = { renderAdvsEditCreate, createAdvs };
+const deleteAdvs = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log(id);
+    await Advertisement.destroy({ where: { id } });
+    res.sendStatus(200);
+  } catch (error) {
+    res.send(`Error ------> ${error}`);
+  }
+};
+
+module.exports = { renderAdvsEditCreate, createAdvs, deleteAdvs };
