@@ -22,7 +22,7 @@ function dynamicBalloonWraper(mapObj) {
     // no -> load balloon content
     balloon.properties.balloonContentBody = 'Идет загрузка данных...';
     mapObj.objectManager.objects.balloon.open(id);
-    const { headerData, bodyData, footerData } = await loadBalloonData(id);
+    const { headerData, bodyData, footerData } = await renderAdvMapSnippet(id);
     balloon.properties.balloonContentHeader = headerData;
     balloon.properties.balloonContentBody = bodyData;
     balloon.properties.balloonContentFooter = footerData;

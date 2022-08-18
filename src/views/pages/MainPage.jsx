@@ -19,29 +19,6 @@ module.exports = function Main({
             </div>
             <div className="col-8 advs-container">
               <AdvsDrawer advs={advs} isForClient wishs={wishs} />
-
-              {/* {advs.map((el) => (
-                <div className="main-container" key={el.id}>
-                  <div className="verical-container">
-                    <img src="#" alt="photo" />
-                    <h6>{el.title}</h6>
-                  </div>
-                  <div className="gorisont-container">
-                    <p className="category">{el.category}</p>
-                    <p className="price">{el.price}</p>
-                    <p className="square">{el.square}</p>
-                    <a href="#">Подробнее</a>
-                    {wishs?.wishlist?.includes(el.id)
-                      ? <button name={el.id} type="button" className="btn btn-danger btn-wishes">Добавлено в избранное</button>
-                      : <button name={el.id} type="button" className="btn btn-wishes">В избранное</button>}
-                    <a href="#">На карте</a>
-
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="col-8">
-              <AdvsDrawer advs={advs} isForClient />
             </div>
           </div>
         </div>
