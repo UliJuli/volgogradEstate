@@ -19,11 +19,9 @@ const createAdvs = async (req, res) => {
       });
     } else {
       const data = [];
-      // console.log("99999", Object.values(req.files));
 
       _.forEach(_.keysIn(req.files.photos), (key) => {
         const photo = req.files.photos[key];
-        // console.log('photo', photo);
         // Use the mv() method to place the file in upload directory (i.e. "uploads")
         photo.mv(`./public/img/flats/${photo.name}`);
         // push file details
@@ -36,7 +34,6 @@ const createAdvs = async (req, res) => {
       // send response
       const photosName = [];
       for (let i = 0; i < req.files.photos.length; i++) {
-        console.log('После forEacha', req.files.photos[i].name);
         photosName.push(req.files.photos[i].name);
       }
       const {
@@ -55,13 +52,10 @@ const createAdvs = async (req, res) => {
         square,
         roomCount,
       });
-      res.send({
-        status: true,
-        message: 'Files are uploaded',
-        data,
-      });
+      res.redirect(`/advs_fullPage/${newAdvs.id}`);
     }
   } catch (err) {
+    console.log(err);
     res.status(500).send(err);
   }
 };
