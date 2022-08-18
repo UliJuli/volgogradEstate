@@ -14,7 +14,7 @@ function profileFormHandler() {
 
     if (form.submit.disabled) return;
 
-    ShowWarning('Профиль раблокирован');
+    ShowWarning('Профиль разблокирован');
   }
 
   editBtn.addEventListener('click', (btnEvent) => {

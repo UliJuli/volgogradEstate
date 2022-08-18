@@ -1,18 +1,21 @@
 const React = require('react');
 
-const AdminPageNavBar = require('./AdminPageNavBar');
+const ProfilePageNav = require('./ProfilePageNav');
 const Layout = require('./Layout');
 
-class AdminPageDataContainer extends React.PureComponent {
+class ProfilePageWrapper extends React.PureComponent {
   render() {
     const {
       children, title, admin, user,
     } = this.props;
+    const isForClient = !!user;
     return (
       <Layout title={title} admin={admin} user={user}>
         <div className="container-fluid">
           <div className="row flex-nowrap">
-            <AdminPageNavBar />
+            <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+              <ProfilePageNav isForClient={isForClient} />
+            </div>
             <div className="col py-3">
               {children}
             </div>
@@ -23,4 +26,4 @@ class AdminPageDataContainer extends React.PureComponent {
   }
 }
 
-module.exports = AdminPageDataContainer;
+module.exports = ProfilePageWrapper;

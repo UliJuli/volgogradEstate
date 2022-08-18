@@ -1,39 +1,44 @@
 const express = require('express');
 
 const renderTemplate = require('../lib/renderTemplate');
-const UserUpdate = require('../views/pages/UserUpdate');
+const ProfilePage = require('../views/pages/ProfilePage');
 const checkPassword = require('../middlewares/checkPassword');
+const checkLoginUser = require('../middlewares/checkLoginUser');
 
 const { User } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.use(checkLoginUser);
+router.get('/profile', async (req, res) => {
   const { user } = res.locals;
   try {
-    renderTemplate(UserUpdate, { user }, res);
+    renderTemplate(ProfilePage, { user }, res);
   } catch (error) {
     console.log(error);
   }
 });
 
 // add middleware to check email
-router.post('/', checkPassword, async (req, res) => {
-  const { user } = res.locals;
-  const {
-    firstName, lastName, phoneNumber,
-  } = req.body;
-  const dataToChange = {};
-  if (firstName) dataToChange.firstName = firstName;
-  if (lastName) dataToChange.lastName = lastName;
-  if (phoneNumber) dataToChange.phoneNumber = phoneNumber;
+router.put('/profile', checkPassword, async (req, res) => {
   try {
-    await User.update({
-      ...dataToChange,
-    }, { where: { email: user.email } });
-    res.redirect('/');
+    const { user } = res.locals;
+    const {
+      firstName, lastName, phoneNumber, email,
+    } = req.body;
+    const dataToUpdate = {};
+    if (firstName) dataToUpdate.firstName = firstName;
+    if (lastName) dataToUpdate.lastName = lastName;
+    if (phoneNumber) dataToUpdate.phoneNumber = phoneNumber;
+    if (email) dataToUpdate.email = email;
+    const userToUpdate = await User.findByPk(user.id);
+    await userToUpdate.update(dataToUpdate);
+    req.session.user = userToUpdate;
+    req.session.save(() => {
+      res.sendStatus(200);
+    });
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 

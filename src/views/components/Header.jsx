@@ -18,7 +18,7 @@ class Header extends React.PureComponent {
                 <svg className="bi" width="30" height="30"><use xlinkHref="#account" /></svg><span className="ms-1 d-none d-sm-inline"> Аккаунт</span>
               </a>
               <ul className="dropdown-menu">
-                {user && (<li><a className="dropdown-item" href="/">Любимое</a></li>)}
+                {user && (<li><a className="dropdown-item" href="/wishlist">Любимое</a></li>)}
                 {user && (<li><a className="dropdown-item" href="/profile">Личный кабинет</a></li>)}
                 {admin && (<li><a className="dropdown-item" href="/admin">Панель управления</a></li>)}
                 {(!user && !admin) && (<li><a className="dropdown-item" href="/login">Войти</a></li>)}
