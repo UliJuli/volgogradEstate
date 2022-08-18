@@ -1,12 +1,16 @@
-const con = document.querySelector('.wishlist-container');
+const con = document.querySelector('.container');
 
 con.addEventListener('click', async (elem) => {
-  const id = elem.target.name;
-  const res2 = await fetch(`/wishlist//delete/${id}`, {
-    method: 'GET',
-  });
-  if (res2.status === 200) {
-    const ul = document.querySelector('.wish-ul');
-    con.removeChild(ul);
+  if (elem.target.parentNode.className.includes('btn-wishes')) {
+    const { id } = elem.target.parentNode;
+    const res = await fetch(`/user/delete/${id}`, {
+      method: 'POST',
+    });
+    const btn = document.getElementById(id);
+    const div = document.querySelector('.delete-con');
+    if (res.status === 200) {
+      div.removeChild(btn.parentNode.parentNode.parentNode.parentNode);
+    }
   }
 });
+

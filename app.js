@@ -27,7 +27,6 @@ const logInSessionHandler = require('./src/middlewares/logInSessionHandler');
 
 app.use(initLocals);
 app.use(logInSessionHandler);
-
 // * <-
 
 // * -> put here your routers
