@@ -1,6 +1,8 @@
 function initYMap() {
   return new Promise((res) => {
     if (!localStorage.viewedAdvs)localStorage.viewedAdvs = '';
+    if (!localStorage.advsData)localStorage.advsData = '{}';
+
     ymaps.ready(init);
     function init() {
       const searchControl = new ymaps.control.SearchControl({

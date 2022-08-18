@@ -21,6 +21,7 @@ module.exports = function Layout({
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossOrigin="anonymous" />
         <link rel="stylesheet" href="/styles/style.css" />
 
+        <script defer src="/js/lib/storageManager.js" />
         <script defer src="/js/lib/showAllerts.js" />
         <script defer src="/js/lib/Component.js" />
         <script defer src="/js/lib/Page.js" />
