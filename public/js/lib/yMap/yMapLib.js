@@ -11,13 +11,10 @@ async function loadBalloonData(id) {
   };
 }
 
-function checkBalloonsForCookies(balloons) {
-  return balloons.map((balloon) => {
-    const { id } = balloon;
-    if (!localStorage.viewedAdvs.includes(id)) return;
-
-    balloon.options.preset = 'islands#yellowDotIcon';
-  });
+function checkAdvForCookies(adv) {
+  const { id } = adv;
+  if (localStorage.viewedAdvs.includes(id)) return true;
+  return false;
 }
 
 function callBack() {

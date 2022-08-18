@@ -12,11 +12,12 @@ function dynamicBalloonWraper(mapObj) {
     const balloon = mapObj.objectManager.objects.getById(id);
 
     // draw marker for object you alredy saw
+    if (!localStorage.viewedAdvs.includes(id)) localStorage.viewedAdvs += `${id},`;
     mapObj.objectManager.objects.setObjectOptions(id, { preset: 'islands#yellowIcon' });
 
     // check did we have info in ballon
     // yes -> show balloon
-    if (hasBalloonData.call(mapObj, id)) { mapObj.objectManager.objects.balloon.open(id); return; }
+    if (hasBalloonData(id)) { mapObj.objectManager.objects.balloon.open(id); return; }
 
     // no -> load balloon content
     balloon.properties.balloonContentBody = 'Идет загрузка данных...';

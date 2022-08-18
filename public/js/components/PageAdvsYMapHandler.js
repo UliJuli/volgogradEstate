@@ -1,37 +1,37 @@
-yMap.isInited.then(() => {
-  addNewObjsInMap(yMap, [
-  // ])
-  // yMap.addNewObjects([
-    {
-      type: 'Feature',
-      id: 0,
-      geometry: { type: 'Point', coordinates: [55.831903, 37.411961] },
-      properties: {
-        // balloonContentBody: 'Hello',
-        // balloonContentHeader: "<font size=3><b><a target='_blank' href='https://yandex.ru'>Здесь может быть ваша ссылка</a></b></font>",
-        // balloonContentBody: "<p>Ваше имя: <input name='login'></p><p><em>Телефон в формате 2xxx-xxx:</em>  <input></p><p><input type='submit' value='Отправить'></p>",
-        // balloonContentFooter: '<font size=1>Информация предоставлена: </font> <strong>этим балуном</strong>',
-        // clusterCaption: '<strong><s>Еще</s> одна</strong> метка',
-        hintContent: '<strong>Текст  <s>подсказки</s></strong>',
-      },
-      options: {
-      },
+function parseAdvData(adv, isInHistory) {
+  const { id, addressCoords } = adv;
+  const res = {
+    type: 'Feature',
+    id,
+    geometry: { type: 'Point', coordinates: addressCoords.split(',') },
+    properties: {
+      // hintContent: '<strong>Текст  <s>подсказки</s></strong>',
     },
-    {
-      type: 'Feature',
-      id: 1,
-      geometry: { type: 'Point', coordinates: [55.763338, 37.565466] },
-      properties: {
-        // balloonContentHeader: "<font size=3><b><a target='_blank' href='https://yandex.ru'>Здесь может быть ваша ссылка</a></b></font>",
-        // balloonContentBody: "<p>Ваше имя: <input name='login'></p><p><em>Телефон в формате 2xxx-xxx:</em>  <input></p><p><input type='submit' value='Отправить'></p>",
-        // balloonContentFooter: '<font size=1>Информация предоставлена: </font> <strong>этим балуном</strong>',
-        // clusterCaption: '<strong><s>Еще</s> одна</strong> метка',
-        hintContent: '<strong>Текст  <s>подсказки</s></strong>',
-      },
-      options: {
-      },
+    options: {
+      preset: 'islands#yellowIcon',
     },
-  ]);
+  };
+  if (!isInHistory) delete res.options.preset;
+  return res;
+}
+
+async function getAdvsCoords() {
+  const req = await fetch('/adsvOnMap', {
+    method: 'POST',
+  });
+  if (req.status !== 200) {
+    ErrorsHandler();
+    return;
+  }
+  const rawData = await req.json();
+  const parsedData = rawData.map((adv) => parseAdvData(adv, checkAdvForCookies(adv)));
+  return parsedData;
+}
+
+yMap.isInited.then(async () => {
+  const advsCoords = await getAdvsCoords();
+
+  addNewObjsInMap(yMap, advsCoords);
   getObjInMapArea(yMap, callBack);
   dynamicBalloonWraper(yMap);
 
@@ -40,7 +40,6 @@ yMap.isInited.then(() => {
 
   srchOnMapBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(srchOnMapInp.value);
     const search = yMap.searchControl.search(srchOnMapInp.value);
     // search.then(() => { yMap.searchControl.clear(); });
   });

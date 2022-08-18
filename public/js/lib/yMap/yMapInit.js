@@ -1,5 +1,6 @@
 function initYMap() {
   return new Promise((res) => {
+    if (!localStorage.viewedAdvs)localStorage.viewedAdvs = '';
     ymaps.ready(init);
     function init() {
       const searchControl = new ymaps.control.SearchControl({
@@ -21,7 +22,9 @@ function initYMap() {
       const objectManager = new ymaps.ObjectManager({
         clusterize: true,
         gridSize: 32,
-        clusterDisableClickZoom: true,
+        // clusterDisableClickZoom: true,   // <- restrict to zoom cluster
+        geoObjectOpenBalloonOnClick: false, // <- restrict to open cluster Balloon
+        clusterOpenBalloonOnClick: false, // <- restrict to open cluster Balloon
       });
 
       objectManager.objects.options.set('preset', 'islands#greenDotIcon');
@@ -32,7 +35,6 @@ function initYMap() {
       yMap.objectManager = objectManager;
       yMap.searchControl = searchControl;
 
-      if (!localStorage.viewedAdvs) localStorage.viewedAdvs = [];
       res();
     }
   });
