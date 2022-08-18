@@ -29,7 +29,6 @@ module.exports = function Layout({
         <script defer src="/js/lib/init.js" />
 
         <script defer src="https://api-maps.yandex.ru/2.1/?apikey=938ef47f-9488-4dc7-b0e4-dcadbd2e3f89&lang=ru_RU" type="text/javascript" />
-
         <title>{title}</title>
       </head>
       <body>

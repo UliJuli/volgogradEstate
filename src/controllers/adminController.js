@@ -2,7 +2,7 @@ const renderTemplate = require('../lib/renderTemplate');
 const AdminAdvsPage = require('../views/pages/AdminAdvsPage');
 const AdminProfilePage = require('../views/pages/AdminProfilePage');
 
-const { Advertisement } = require('../../db/models');
+const { Advertisement, Admin } = require('../../db/models');
 
 const redirectToAdvs = async (req, res) => {
   res.redirect('/admin/advs');
@@ -47,18 +47,18 @@ const renderAdv = async (req, res) => {
 const renderAdminProfile = async (req, res) => {
   res.locals.title = 'Some project';
   const { admin } = res.locals;
-  console.log('~ admin', admin);
   renderTemplate(AdminProfilePage, { profileData: admin }, res);
 };
 
 const updateAdminProfile = async (req, res) => {
   try {
-    // const admin
-    // const {
-    //   firstName, lastName, phoneNumber, email,
-    // } = req.body;
-
-    res.sendStatus(200);
+    const { admin } = res.locals;
+    const adminToUpdate = await Admin.findByPk(admin.id);
+    await adminToUpdate.update(req.body);
+    req.session.admin = adminToUpdate;
+    req.session.save(() => {
+      res.sendStatus(200);
+    });
   } catch (error) {
     res.sendStatus(500);
   }

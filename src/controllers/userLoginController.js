@@ -12,7 +12,7 @@ const renderLoginRegistr = (req, res) => {
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email }, raw: true });
     if (user) {
       const passwordCheck = await bcrypt.compare(password, user.password);
       if (passwordCheck) {
@@ -24,7 +24,7 @@ const userLogin = async (req, res) => {
       }
     }
 
-    const admin = await Admin.findOne({ where: { email } });
+    const admin = await Admin.findOne({ where: { email }, raw: true });
     if (admin) {
       const passwordCheck = await bcrypt.compare(password, admin.password);
       if (passwordCheck) {
@@ -44,14 +44,10 @@ const userLogin = async (req, res) => {
 
 const logOut = (req, res) => {
   try {
-    if (req.session.user) {
-      req.session.destroy(() => {
-        res.clearCookie('Cookie');
-        res.redirect('/');
-      });
-    } else {
-      res.redirect('/login');
-    }
+    req.session.destroy(() => {
+      res.clearCookie('loginInfo');
+      res.redirect('/');
+    });
   } catch (error) {
     res.send(`Error ------> ${error}`);
   }

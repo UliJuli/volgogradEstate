@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function UserRegistrationPage({ title }) {
+module.exports = function UserRegistrationPage({ title, user, admin }) {
   return (
-    <Layout title={title}>
+    <Layout title={title} user={user} admin={admin}>
       <form action="/user_registration" method="POST">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>

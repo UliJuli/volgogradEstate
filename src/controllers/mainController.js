@@ -7,7 +7,8 @@ const renderMain = async (req, res) => {
 
   res.locals.title = 'Some project';
   const { user } = res.locals;
-  renderTemplate(MainPage, { user, advs }, res);
+  const wishs = user?.id ? res.app.locals.userData[user.id] : [];
+  renderTemplate(MainPage, { user, advs, wishs }, res);
 };
 
 module.exports = { renderMain };

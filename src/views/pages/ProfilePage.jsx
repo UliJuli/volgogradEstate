@@ -2,9 +2,9 @@ const React = require('react');
 
 const Layout = require('../components/Layout');
 
-module.exports = function ProfilePage({ advs, user }) {
+module.exports = function ProfilePage({ advs, user, admin }) {
   return (
-    <Layout user={user}>
+    <Layout user={user} admin={admin}>
       <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
         <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
           <a href="/" className="navbar-brand d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
@@ -29,24 +29,25 @@ module.exports = function ProfilePage({ advs, user }) {
           </ul>
         </div>
       </div>
-      <main role="main">
-        <ul className="entries-list no-bullets no-padding">
-          {advs.map((adv) => (
+      <div className="wishlist-container">
+        {advs.map((adv) => (
+          <ul className="entries-list no-bullets no-padding wish-ul">
             <li className="entry-item pad-b-4" key={adv.id}>
               <img src={adv.photo} alt="" />
-              <h3>{advs.title}</h3>
+              <h3>{adv.title}</h3>
               <div>
-                <span>{adv.category}</span>
+                <span>{adv['Category.name']}</span>
                 <span>{adv.price}</span>
                 <span>{adv.square}/{adv.roomCount}</span>
               </div>
               <a href={`/advs/${adv.id}`} className="entry-title font-2 pad-b-1-4 c-white">More info</a>
-              <a href={`/wishlist/delete/${adv.id}`} className="entry-title font-2 pad-b-1-4 c-white">remove from wishlist</a>
-              <a href="/map" className="entry-title font-2 pad-b-1-4 c-white">on map</a>
+              <button type="button" name={adv['Wishlists.id']} className="entry-title font-2 pad-b-1-4 c-white">remove from wishlist</button>
+              <a id={adv.id} href="/map" className="entry-title font-2 pad-b-1-4 c-white">on map</a>
             </li>
-          ))}
-        </ul>
-      </main>
+          </ul>
+        ))}
+      </div>
+      <script src="/js/client2.js" />
     </Layout>
   );
 };

@@ -4,7 +4,11 @@ const { renderUserRegistr, createUser } = require('../controllers/userRegControl
 
 const router = express.Router();
 
-router.get('/user_registration', renderUserRegistr)
-  .post('/user_registration', createUser);
+const mustBeNotLogined = require('../middlewares/mustBeNotLogined');
+
+router.route('/user_registration')
+  .all(mustBeNotLogined)
+  .get(renderUserRegistr)
+  .post(createUser);
 
 module.exports = router;
