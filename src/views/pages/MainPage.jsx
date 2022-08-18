@@ -18,8 +18,9 @@ module.exports = function Main({
               <FilterForAdvs />
             </div>
             <div className="col-8 advs-container">
+              <AdvsDrawer advs={advs} isForClient wishs={wishs} />
 
-              {advs.map((el) => (
+              {/* {advs.map((el) => (
                 <div className="main-container" key={el.id}>
                   <div className="verical-container">
                     <img src="#" alt="photo" />

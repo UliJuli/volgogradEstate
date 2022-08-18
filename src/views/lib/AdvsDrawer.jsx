@@ -1,15 +1,15 @@
 const React = require('react');
 const AdvComponent = require('../components/AdvComponent');
 
-class AdminPageNavBar extends React.PureComponent {
+class AdvsDrawer extends React.PureComponent {
   render() {
-    const { advs, isForClient } = this.props;
+    const { advs, isForClient, wishs } = this.props;
     return (
       <div>
-        {advs?.map((adv) => (<AdvComponent adv={adv} isForClient={isForClient} />))}
+        {advs?.map((adv) => (<AdvComponent adv={adv} isForClient={isForClient} wishs={wishs} />))}
       </div>
     );
   }
 }
 
-module.exports = AdminPageNavBar;
+module.exports = AdvsDrawer;
