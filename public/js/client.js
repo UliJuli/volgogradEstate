@@ -20,6 +20,3 @@ div.addEventListener('click', async (el) => {
 
 const btnInfo = document.querySelector('.btn-info');
 
-btnInfo.addEventListener('click', () => {
-  const id = doc
-} )
