@@ -13,7 +13,9 @@ class ProfilePageWrapper extends React.PureComponent {
       <Layout title={title} admin={admin} user={user}>
         <div className="container-fluid">
           <div className="row flex-nowrap">
-            <ProfilePageNav isForClient={isForClient} />
+            <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+              <ProfilePageNav isForClient={isForClient} />
+            </div>
             <div className="col py-3">
               {children}
             </div>
