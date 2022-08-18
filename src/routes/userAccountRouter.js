@@ -62,7 +62,9 @@ router.post('/add/:id', async (req, res) => {
       }
       res.sendStatus(300);
     }
+    console.log(2);
   } catch (error) {
+    console.log('~ error', error);
     res.sendStatus(500);
   }
 });

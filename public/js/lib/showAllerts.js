@@ -1,7 +1,9 @@
 function ShowAlert(type, iconName, message) {
   const body = document.querySelector('body');
   const success = document.createElement('div');
-  success.classList = 'alert alert-dismissible fade show position-absolute bottom-0 end-0  d-flex align-items-center';
+  success.classList = 'alert alert-dismissible fade show position-fixed bottom-0 end-0  d-flex align-items-center';
+  success.style.width = 'fit-content';
+  success.style.margin = '1.5rem';
   success.classList.add(type);
   success.setAttribute('role', 'alert');
   success.innerHTML = `
