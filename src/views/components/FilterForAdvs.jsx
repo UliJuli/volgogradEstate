@@ -3,28 +3,28 @@ const React = require('react');
 class FilterForAdvs extends React.PureComponent {
   render() {
     return (
-      <div>
+      <form className="form-filter" method="post" action="/filter">
         <div className="filter-category">
           <p>Категория:</p>
-          <select className="form-select" aria-label="Default select example">
-            <option selected>Квартира</option>
-            <option value="1">Комната</option>
-            <option value="2">Дом</option>
+          <select name="apart" className="form-select" aria-label="Default select example">
+            <option value="1" selected>Квартира</option>
+            <option value="2">Комната</option>
+            <option value="3">Дом</option>
           </select>
         </div>
         <div className="checkbox form-check form-check-inline">
           <h8>Количество комнат :</h8>
           <div className="boxcheck">
             <div className="form-check form-check-inline">
-              <input name="roomCount-1" className="form-check-input" type="checkbox" id="roomCount-1" value="option1" />
+              <input name="roomCount1" className="form-check-input" type="checkbox" id="roomCount-1" value="option1" />
               <label className="form-check-label" htmlFor="roomCount-1">1</label>
             </div>
             <div className="form-check form-check-inline">
-              <input name="roomCount-2" className="form-check-input" type="checkbox" id="roomCount-2" value="option2" />
+              <input name="roomCount2" className="form-check-input" type="checkbox" id="roomCount-2" value="option2" />
               <label className="form-check-label" htmlFor="roomCount-2">2</label>
             </div>
             <div className="form-check form-check-inline">
-              <input name="roomCount-3" className="form-check-input" type="checkbox" id="roomCount-3" value="option3" />
+              <input name="roomCount3" className="form-check-input" type="checkbox" id="roomCount-3" value="option3" />
               <label className="form-check-label" htmlFor="roomCount-3">3</label>
             </div>
           </div>
@@ -42,7 +42,8 @@ class FilterForAdvs extends React.PureComponent {
             <span className="input-group-text">50000</span>
           </div>
         </div>
-      </div>
+        <button type="submit" className="filter-btn">Фильтровать</button>
+      </form>
     );
   }
 }
