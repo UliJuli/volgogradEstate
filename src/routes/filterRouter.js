@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   const id = req.body.apart;
-  const roomCountArr = [];
+  let roomCountArr = [];
   if (req.body.roomCount1) {
     roomCountArr.push(Number(req.body.roomCount1));
   }
@@ -20,12 +20,14 @@ router.post('/', async (req, res) => {
   }
   const minPrice = req.body.minPrice ? req.body.minPrice : 0;
   const maxPrice = req.body.maxPrice ? req.body.maxPrice : 50000;
-  console.log(roomCountArr);
   try {
+    const rooms = await Advertisement.findAll();
+    if (!roomCountArr.length) {
+      roomCountArr = rooms.map((el) => el.roomCount);
+    }
     const advs = await Advertisement.findAll({
       where: {
         category: id,
-        // roomCount: { [Op.or]: [roomCountArr, [1, 2, 3]] },
         roomCount: roomCountArr,
         price: {
           [Op.and]: {
@@ -35,7 +37,6 @@ router.post('/', async (req, res) => {
         },
       },
     });
-    console.log(advs)
     res.locals.title = 'Some project';
     const { user } = res.locals;
     const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];
