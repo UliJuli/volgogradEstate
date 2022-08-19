@@ -28,10 +28,10 @@ router.route('/advs/new')
 router.route('/advs/:id/edit')
   .get(renderFormEditAdvs);
 
-router.route('/advs/:advsId')
+router.route('/advs/:id')
   .get(renderAdv)
-  .delete(deleteAdv)
-  .put(editAdv);
+  .post(editAdv)
+  .delete(deleteAdv);
 
 router.route('/profile')
   .get(renderAdminProfile)

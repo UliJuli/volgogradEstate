@@ -14,7 +14,7 @@ module.exports = function AdminAdvsPage({
             <FilterForAdvs />
           </div>
           <div className="col d-flex flex-column advs-container" style={{ gap: '1.5rem' }}>
-            <AdvsDrawer advs={advs} user={user} />
+            <AdvsDrawer admin={admin} advs={advs} user={user} />
           </div>
         </div>
       </div>

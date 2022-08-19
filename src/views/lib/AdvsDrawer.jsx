@@ -3,9 +3,11 @@ const AdvComponent = require('../components/AdvComponent');
 
 class AdvsDrawer extends React.PureComponent {
   render() {
-    const { advs, user, wishs } = this.props;
+    const {
+      advs, user, wishs, admin,
+    } = this.props;
     return (
-      advs?.map((adv) => (<AdvComponent adv={adv} user={user} wishs={wishs} />))
+      advs?.map((adv) => (<AdvComponent adv={adv} admin={admin} user={user} wishs={wishs} />))
     );
   }
 }

@@ -9,7 +9,7 @@ module.exports = function WishListPage({
     <ProfilePageWrapper title={title} admin={admin} user={user}>
       <div className="container">
         <div className="d-flex flex-column">
-          <AdvsDrawer advs={advs} wishs={wishs} user />
+          <AdvsDrawer advs={advs} wishs={wishs} user={user} admin={admin} />
         </div>
       </div>
     </ProfilePageWrapper>

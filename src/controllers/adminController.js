@@ -77,7 +77,6 @@ const editAdv = async (req, res) => {
       square,
       roomCount,
     } = req.body;
-    console.log('~ req.body', req.body);
     const { id } = req.params;
     console.log('~ id', id);
     const advToUpdate = await Advertisement.findByPk(id);
@@ -90,7 +89,7 @@ const editAdv = async (req, res) => {
     if (square) dataAdvToUpdate.square = square;
     if (roomCount) dataAdvToUpdate.roomCount = roomCount;
     await advToUpdate.update(dataAdvToUpdate);
-    res.sendStatus(200);
+    res.redirect(`/flat/${id}`);
   } catch (error) {
     res.sendStatus(500);
   }
@@ -136,7 +135,6 @@ const updateAdminProfile = async (req, res) => {
     const {
       firstName, lastName, phoneNumber, email,
     } = req.body;
-    console.log('~ req.body', req.body);
     const adminToUpdate = await Admin.findByPk(admin.id);
     const dataToUpdate = {};
     if (firstName) dataToUpdate.firstName = firstName;
