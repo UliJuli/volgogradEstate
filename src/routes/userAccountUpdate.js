@@ -15,7 +15,7 @@ router.get('/profile', async (req, res) => {
   try {
     renderTemplate(ProfilePage, { user }, res);
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 

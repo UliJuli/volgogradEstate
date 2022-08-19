@@ -9,7 +9,7 @@ module.exports = function AdvsOnMapPage({ title, admin, user }) {
       <div className="container">
         <div className="row mb-3"><SearchByAddressComponent /></div>
         <div className="row">
-          <div className="col-sm-4">col-sm-4</div>
+          <div id="flat-container" className="col-sm-4">col-sm-4</div>
           <div className="col-sm-8">
             <YandexMapsComponent isForAdvForm />
           </div>

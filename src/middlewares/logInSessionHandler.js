@@ -10,7 +10,6 @@ const logInSessionWrapper = async (req, res, next) => {
     if (!res.app.locals.userData[user.id]?.wishlist) {
       const wishlist = await Wishlist.findAll({ where: { userId: user.id }, raw: true });
       res.app.locals.userData[user.id].wishlist = wishlist?.map((el) => el.advertisementId);
-      console.log(res.app.locals.userData[user.id].wishlist)
     }
   }
 

@@ -7,13 +7,11 @@ async function loadAdvData(id) {
   const advData = getDataSesStorageObj('advsData', id);
   if (advData) return advData;
 
-  const req = await fetch('', {
+  const req = await fetch(`/flat/${id}`, {
     method: 'POST',
-    heaaders: { 'Content-type': 'application/json' },
-    body: JSON.stringify(id),
   });
   const res = await req.json();
-  sessionStorage.addDataSesStorageObj('advsData', res);
+  addDataSesStorageObj('advsData', res);
   return res;
 }
 
@@ -35,8 +33,4 @@ function checkAdvForCookies(adv) {
   const { id } = adv;
   if (localStorage.viewedAdvs.includes(id)) return true;
   return false;
-}
-
-function callBack() {
-  console.log(yMap.visibleObjects);
 }

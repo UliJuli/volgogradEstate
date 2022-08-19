@@ -4,8 +4,6 @@ async function addNewObjsInMap(mapObj, objects) {
     type: 'FeatureCollection',
     features: objects,
   };
-  console.log('~ objToAdd', objToAdd);
-  console.log('~ mapObj', mapObj);
   mapObj.objectManager.add(objToAdd);
   return mapObj;
 }

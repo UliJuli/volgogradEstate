@@ -14,6 +14,7 @@ class YandexMapsComponent extends React.PureComponent {
               <script defer src="/js/lib/yMap/modules/addNewObjsInMap.js" />
               <script defer src="/js/lib/yMap/modules/getObjInMapArea.js" />
               <script defer src="/js/lib/yMap/modules/dynamicBalloonWraper.js" />
+              <script defer src="/js/components/AdvsDrawer.js" />
               <script defer src="/js/components/PageAdvsYMapHandler.js" />
             </div>
           )}

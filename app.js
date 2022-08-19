@@ -48,6 +48,7 @@ const advsEditCreateRoutes = require('./src/routes/advsEditCreateRoutes'); // Р
 
 const userAccountRouter = require('./src/routes/userAccountRouter');
 const userAccountUpdate = require('./src/routes/userAccountUpdate');
+const flatRouter = require('./src/routes/flatRouter');
 
 const adsvMapRouter = require('./src/routes/adsvMapRouter');
 const filterRouter = require('./src/routes/filterRouter');
@@ -56,6 +57,8 @@ app.use('/', advsEditCreateRoutes);
 app.use('/', advsFullRoutes);
 app.use('/', userLoginRoutes);
 app.use('/', mainRouter);
+
+app.use('/flat', flatRouter);
 
 app.use('/adsvOnMap', adsvMapRouter);
 

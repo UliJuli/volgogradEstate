@@ -13,7 +13,6 @@ const redirectToAdvs = async (req, res) => {
 
 const renderAdvs = async (req, res) => {
   const advs = await Advertisement.findAll({ raw: true, include: Category });
-  console.log('~ advs', advs);
   res.locals.title = 'Some project';
   renderTemplate(AdminAdvsPage, { advs }, res);
 };
@@ -63,7 +62,6 @@ const createAdvs = async (req, res) => {
       res.redirect(`/advs_fullPage/${newAdvs.id}`);
     }
   } catch (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 };
@@ -76,7 +74,6 @@ const editAdv = async (req, res) => {
 const deleteAdv = async (req, res) => {
   try {
     const { id } = req.body;
-    console.log(id);
     await Advertisement.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {
@@ -94,7 +91,6 @@ const renderFormEditAdvs = async (req, res) => {
   const { id } = req.params;
   const allCategories = await Category.findAll();
   const adv = await Advertisement.findByPk(id);
-  console.log('~ adv', adv);
   renderTemplate(AdvEditCreatePage, { isEditForm: true, allCategories, adv }, res);
 };
 

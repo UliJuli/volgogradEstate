@@ -1,7 +1,8 @@
 const express = require('express');
 const { Advertisement } = require('../../db/models');
 const renderTemplate = require('../lib/renderTemplate');
-const MainPage = require('../views/pages/MainPage')
+const MainPage = require('../views/pages/MainPage');
+
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -13,7 +14,7 @@ router.post('/', async (req, res) => {
     const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];
     renderTemplate(MainPage, { user, advs, wishs }, res);
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 
