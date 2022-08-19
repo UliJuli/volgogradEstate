@@ -23,9 +23,9 @@ async function loadAdvData(id) {
 async function renderAdvMapSnippet(id) {
   const advData = await loadAdvData(id);
   console.log('~ advData', advData);
-  const headerData = `${id} <- balloon.properties.balloonContentHeader`;
-  const bodyData = `${id} <- balloon.properties.balloonContentBody`;
-  const footerData = `${id} <- balloon.properties`;
+  const headerData = advData.title;
+  const bodyData = `<div>${advData.description}. Цена: ${advData.price} руб.</div>`;
+  const footerData = `<div>Площадь: ${advData.square} м2</div><div>Кол-во комнат: ${advData.roomCount}</div>`;
   return { headerData, bodyData, footerData };
 }
 
