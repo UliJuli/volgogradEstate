@@ -14,7 +14,7 @@ module.exports = function Main({
             <FilterForAdvs />
           </div>
           <div className="col d-flex flex-column advs-container" style={{ gap: '1.5rem' }}>
-            <AdvsDrawer advs={advs} isForClient wishs={wishs} />
+            <AdvsDrawer advs={advs} user={user} wishs={wishs} />
           </div>
         </div>
       </div>

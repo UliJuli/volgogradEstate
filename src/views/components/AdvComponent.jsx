@@ -6,7 +6,7 @@ class AdvComponent extends React.PureComponent {
       adv: {
         id, title, price, square, createdAt, photo,
       },
-      adv, isForClient, wishs,
+      adv, user, wishs,
     } = this.props;
     const photoUrl = `url('/img/flats/${photo.split(',')[0]}')`;
     // "url('https://source.unsplash.com/600x900/?tech,street')"
@@ -31,14 +31,14 @@ class AdvComponent extends React.PureComponent {
           </div>
           <div className="card-footer">
             <div className="media d-flex flex-row" style={{ gap: '1.5rem' }}>
-              {isForClient
+              {user
                 && <a href="#" type="button" className="btn btn-outline-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#maps" /></svg><span className="ms-1 d-none d-lg-inline"> На карте</span></a>}
               <a href="#" type="button" className="btn btn-outline-info d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#moreInfoAdvs" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></a>
-              {!isForClient
-                && <a href="#" type="button" style={{ marginLeft: 'auto' }} className="btn btn-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#settings" /></svg><span className="ms-1 d-none d-sm-inline"> Изменить</span></a>}
+              {!user
+                && <a href={`/admin/advs/${id}/edit`} type="button" style={{ marginLeft: 'auto' }} className="btn btn-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#settings" /></svg><span className="ms-1 d-none d-sm-inline"> Изменить</span></a>}
               {wishs?.includes(id)
-                ? isForClient && <button type="button" style={{ marginLeft: 'auto' }} className="btn btn-danger btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Следить</span></button>
-                : isForClient && <button type="button" style={{ marginLeft: 'auto' }} className="btn btn-outline-danger btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Следить</span></button>}
+                ? user && <button type="button" style={{ marginLeft: 'auto' }} className="btn btn-danger btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Следить</span></button>
+                : user && <button type="button" style={{ marginLeft: 'auto' }} className="btn btn-outline-danger btn-wishes d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#favoriteIcon" /></svg><span className="ms-1 d-none d-sm-inline"> Следить</span></button>}
             </div>
           </div>
         </div>

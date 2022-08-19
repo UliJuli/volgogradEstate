@@ -24,6 +24,7 @@ async function getAdvsCoords() {
     return;
   }
   const rawData = await req.json();
+  console.log('~ rawData', rawData);
   const parsedData = rawData.map((adv) => parseAdvData(adv, checkAdvForCookies(adv)));
   return parsedData;
 }

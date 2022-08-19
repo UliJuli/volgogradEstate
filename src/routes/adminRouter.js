@@ -25,7 +25,7 @@ router.route('/advs')
 router.route('/advs/new')
   .get(renderFormNewAdvs);
 
-router.route('/advs/:advsId/edit')
+router.route('/advs/:id/edit')
   .get(renderFormEditAdvs);
 
 router.route('/advs/:advsId')
