@@ -1,11 +1,11 @@
 const renderTemplate = require('../lib/renderTemplate');
-const AdvsOnMapPage = require('../views/pages/AdvsOnMapPage');
+const AdvsFullPage = require('../views/pages/AdvsFullPage');
 
 const { Advertisement } = require('../../db/models');
 
 const renderFlatPage = async (req, res) => {
   res.locals.title = 'Some project';
-  renderTemplate(AdvsOnMapPage, {}, res);
+  renderTemplate(AdvsFullPage, {}, res);
 };
 
 const getFlatData = async (req, res) => {

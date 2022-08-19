@@ -31,7 +31,7 @@ class AdvComponent extends React.PureComponent {
           <div className="card-footer">
             <div className="media d-flex flex-row" style={{ gap: '1.5rem' }}>
               {user
-                && <a href="#" type="button" className="btn btn-outline-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#maps" /></svg><span className="ms-1 d-none d-lg-inline"> На карте</span></a>}
+                && <a href="/adsvOnMap" type="button" className="btn btn-outline-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#maps" /></svg><span className="ms-1 d-none d-lg-inline"> На карте</span></a>}
               <a href="#" type="button" className="btn btn-outline-info d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#moreInfoAdvs" /></svg><span className="ms-1 d-none d-sm-inline"> Подробнее</span></a>
               {!user
                 && <a href={`/admin/advs/${id}/edit`} type="button" style={{ marginLeft: 'auto' }} className="btn btn-warning d-inline-flex align-items-center"><svg className="bi" width="20" height="20"><use xlinkHref="#settings" /></svg><span className="ms-1 d-none d-sm-inline"> Изменить</span></a>}
