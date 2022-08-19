@@ -31,8 +31,12 @@ class ProfileForm extends React.PureComponent {
         </div>
         <div className="mb-3">
           <div className="d-flex flex-row">
-            <button id="profile-edit-btn" type="button" className="btn btn-primary">Изменить</button>
-            <button name="submit" type="submit" className="btn btn-primary" disabled style={{ marginLeft: 'auto' }}>Подтвердить</button>
+            <button id="profile-edit-btn" type="button" className="btn btn-primary">
+              <svg className="bi" width="20" height="20"><use xlinkHref="#settings" /></svg><span className="ms-1 d-none d-sm-inline"> Изменить</span>
+            </button>
+            <button name="submit" type="submit" className="btn btn-primary" disabled style={{ marginLeft: 'auto' }}>
+              <svg className="bi" width="20" height="20"><use xlinkHref="#ok" /></svg><span className="ms-1 d-none d-sm-inline"> Подтвердить</span>
+            </button>
           </div>
         </div>
         <script defer src="/js/lib/profileFormHandler.js" />

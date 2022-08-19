@@ -1,16 +1,22 @@
 const con = document.querySelector('.container');
 
-con.addEventListener('click', async (elem) => {
-  if (elem.target.parentNode.className.includes('btn-wishes')) {
-    const { id } = elem.target.parentNode;
-    const res = await fetch(`/user/delete/${id}`, {
+con.addEventListener('click', async (el) => {
+  const btn = el.target.parentElement;
+  if (btn.className.includes('btn-wishes')) {
+    const { id } = btn.parentElement.parentElement.parentElement.parentElement;
+    const res = await fetch(`/user/add/${id}`, {
       method: 'POST',
     });
-    const btn = document.getElementById(id);
-    const div = document.querySelector('.delete-con');
     if (res.status === 200) {
-      div.removeChild(btn.parentNode.parentNode.parentNode.parentNode);
+      btn.classList.toggle('btn-outline-danger');
+      btn.classList.toggle('btn-danger');
+      ShowSuccess('Добавили в избранное');
+    }
+    if (res.status === 300) {
+      btn.classList.toggle('btn-danger');
+      btn.classList.toggle('btn-outline-danger');
+      btn.parentElement.parentElement.parentElement.parentElement.remove();
+      ShowError('Убрали из избранное');
     }
   }
 });
-

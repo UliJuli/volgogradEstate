@@ -7,7 +7,7 @@ class ProfilePageNav extends React.PureComponent {
       <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
         <ul className="navbar navbar-nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li className="nav-item">
-            <a href={isForClient ? '/user' : '/admin'} className="nav-link d-flex align-items-center px-0">
+            <a href="/" className="nav-link d-flex align-items-center px-0">
               <svg className="bi" width="20" height="20"><use xlinkHref="#home" /></svg><span className="ms-1 d-none d-sm-inline"> Home</span>
             </a>
             {!isForClient && (

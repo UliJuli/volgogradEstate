@@ -1,9 +1,9 @@
 const renderTemplate = require('../lib/renderTemplate');
 const MainPage = require('../views/pages/MainPage');
-const { Advertisement } = require('../../db/models');
+const { Advertisement, Category } = require('../../db/models');
 
 const renderMain = async (req, res) => {
-  const advs = await Advertisement.findAll({ raw: true });
+  const advs = await Advertisement.findAll({ raw: true, include: Category });
   res.locals.title = 'Some project';
   const { user } = res.locals;
   const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];

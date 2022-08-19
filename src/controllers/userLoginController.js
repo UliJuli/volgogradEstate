@@ -36,7 +36,7 @@ const userLogin = async (req, res) => {
       }
     }
 
-    res.status(400).redirect('/login');
+    res.status(400).redirect('/user_registration');
   } catch (error) {
     console.log(error);
   }

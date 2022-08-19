@@ -20,9 +20,7 @@ router.use(checkAdminPermissions);
 router.get('/', redirectToAdvs);
 router.route('/advs')
   .get(renderAdvs)
-  .post(createAdvs)
-  .put(editAdv)
-  .delete(deleteAdv);
+  .post(createAdvs);
 
 router.route('/advs/new')
   .get(renderFormNewAdvs);
@@ -31,7 +29,9 @@ router.route('/advs/:advsId/edit')
   .get(renderFormEditAdvs);
 
 router.route('/advs/:advsId')
-  .get(renderAdv);
+  .get(renderAdv)
+  .delete(deleteAdv)
+  .put(editAdv);
 
 router.route('/profile')
   .get(renderAdminProfile)
