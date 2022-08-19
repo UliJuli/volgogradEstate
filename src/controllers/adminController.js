@@ -78,7 +78,6 @@ const editAdv = async (req, res) => {
       roomCount,
     } = req.body;
     const { id } = req.params;
-    console.log('~ id', id);
     const advToUpdate = await Advertisement.findByPk(id);
     const dataAdvToUpdate = {};
     if (title) dataAdvToUpdate.title = title;

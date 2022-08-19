@@ -9,7 +9,6 @@ function AdvsDrawer(objMap) {
 }
 
 function advTamplate(adv) {
-  console.log('~ adv', adv);
   const {
     id, title, price, square, createdAt, photo,
   } = adv;

@@ -9,10 +9,10 @@ module.exports = function AdvsOnMapPage({ title, admin, user }) {
       <div className="container">
         <div className="row mb-3"><SearchByAddressComponent /></div>
         <div className="row">
-          <div id="flat-container" className="col-sm-4">Перемести карту, чтобы обновить данные</div>
           <div className="col-sm-8">
             <YandexMapsComponent isForAdvForm />
           </div>
+          <div id="flat-container" className="col-sm-4">Перемести карту, чтобы обновить данные</div>
         </div>
       </div>
     </Layout>
