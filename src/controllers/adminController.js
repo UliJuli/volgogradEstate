@@ -29,9 +29,7 @@ const createAdvs = async (req, res) => {
       const data = [];
 
       _.forEach(_.keysIn(req.files.photos), (key) => {
-        console.log('~ req.files', req.files);
         const photo = req.files.photos[key];
-        console.log('~ photo', photo);
         // Use the mv() method to place the file in upload directory (i.e. "uploads")
         photo.mv(`./public/img/flats/${photo.name}`);
         // push file details
@@ -43,7 +41,7 @@ const createAdvs = async (req, res) => {
       });
       // send response
       const photosName = [];
-      for (let i = 0; i < req.files.photos.length; i += 1) {
+      for (let i = 0; i < req.files.photos.length; i++) {
         photosName.push(req.files.photos[i].name);
       }
       const {
@@ -56,13 +54,13 @@ const createAdvs = async (req, res) => {
         title,
         description,
         addressString,
-        addressCoords: '55.831903,37.411961',
+        addressCoords,
         price,
         photo: photosName.toString(),
         square,
         roomCount,
       });
-      res.redirect(`admin/advs/${newAdvs.id}/edit`);
+      res.redirect(`/advs_fullPage/${newAdvs.id}`);
     }
   } catch (err) {
     console.log(err);
@@ -117,9 +115,10 @@ const renderFormNewAdvs = async (req, res) => {
 
 const renderFormEditAdvs = async (req, res) => {
   res.locals.title = 'User Registration Page';
-  const { id } = req.query;
+  const { id } = req.params;
   const allCategories = await Category.findAll();
-  const adv = Advertisement.findByPk(id);
+  const adv = await Advertisement.findByPk(id);
+  console.log('~ adv', adv);
   renderTemplate(AdvEditCreatePage, { isEditForm: true, allCategories, adv }, res);
 };
 
