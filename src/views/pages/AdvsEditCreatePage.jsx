@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function AdvsEditCreate({ title, allCategories }) {
+module.exports = function AdvsEditCreatePage({ title, allCategories }) {
   return (
     <Layout title={title}>
       <form

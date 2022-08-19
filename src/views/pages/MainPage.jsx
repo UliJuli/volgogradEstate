@@ -9,14 +9,12 @@ module.exports = function Main({
   return (
     <Layout title={title} user={user} admin={admin}>
       <div className="container">
-        <div className="container">
-          <div className="row flex-column flex-md-row">
-            <div style={{ width: '200px' }}>
-              <FilterForAdvs />
-            </div>
-            <div className="col d-flex flex-column advs-container" style={{ gap: '1.5rem' }}>
-              <AdvsDrawer advs={advs} isForClient wishs={wishs} />
-            </div>
+        <div className="row flex-column flex-md-row">
+          <div style={{ width: '200px' }}>
+            <FilterForAdvs />
+          </div>
+          <div className="col d-flex flex-column advs-container" style={{ gap: '1.5rem' }}>
+            <AdvsDrawer advs={advs} isForClient wishs={wishs} />
           </div>
         </div>
       </div>

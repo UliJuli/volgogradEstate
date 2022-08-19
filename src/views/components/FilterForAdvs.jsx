@@ -8,8 +8,8 @@ class FilterForAdvs extends React.PureComponent {
           <p>Категория:</p>
           <select className="form-select" aria-label="Default select example">
             <option selected>Квартира</option>
-            <option defaultValue="1">Комната</option>
-            <option defaultValue="2">Дом</option>
+            <option value="1">Комната</option>
+            <option value="2">Дом</option>
           </select>
         </div>
         <div className="checkbox form-check form-check-inline">

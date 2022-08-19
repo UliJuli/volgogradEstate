@@ -9,9 +9,13 @@ module.exports = function AdminAdvsPage({
   return (
     <ProfilePageWrapper title={title} admin={admin} user={user}>
       <div className="container">
-        <div className="d-flex flex-column">
-          <FilterForAdvs />
-          <AdvsDrawer advs={advs} isForClient={false} />
+        <div className="row flex-column flex-md-row">
+          <div style={{ width: '200px' }}>
+            <FilterForAdvs />
+          </div>
+          <div className="col d-flex flex-column advs-container" style={{ gap: '1.5rem' }}>
+            <AdvsDrawer advs={advs} user={user} />
+          </div>
         </div>
       </div>
     </ProfilePageWrapper>
