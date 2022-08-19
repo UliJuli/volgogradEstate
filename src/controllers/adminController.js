@@ -71,8 +71,32 @@ const createAdvs = async (req, res) => {
 };
 
 const editAdv = async (req, res) => {
-  res.locals.title = 'Some project';
-  res.sendStatus(200);
+  try {
+    res.locals.title = 'Some project';
+    const {
+      title,
+      description,
+      addressString,
+      addressCoords,
+      price,
+      square,
+      roomCount,
+    } = req.body;
+    const { id } = req.params;
+    const advToUpdate = await Advertisement.findByPk(id);
+    const dataAdvToUpdate = {};
+    if (title) dataAdvToUpdate.title = title;
+    if (description) dataAdvToUpdate.description = description;
+    if (addressString) dataAdvToUpdate.addressString = addressString;
+    if (addressCoords) dataAdvToUpdate.addressCoords = addressCoords;
+    if (price) dataAdvToUpdate.price = price;
+    if (square) dataAdvToUpdate.square = square;
+    if (roomCount) dataAdvToUpdate.roomCount = roomCount;
+    await advToUpdate.update(dataAdvToUpdate);
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
 };
 
 const deleteAdv = async (req, res) => {
