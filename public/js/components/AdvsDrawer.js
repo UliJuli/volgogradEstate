@@ -32,6 +32,12 @@ function advTamplate(adv) {
             <td class="p-0">${`${square} м2.`}</td>
           </tr>
         </table>
+        
+        </div>
+        <div className="card-footer">
+        <div className="media d-flex flex-row" style={{ gap: '1.5rem' }}>
+          <a href='/flat/${id}' type="button" class="btn btn-outline-info d-inline-flex align-items-center"><svg class="bi" width="20" height="20"><use xlink:href="#moreInfoAdvs" /></svg><span class="ms-1 d-none d-xl-inline"> Подробнее</span></a>
+        </div>
       </div>
     </div>
   </div>`;
