@@ -55,7 +55,6 @@ const createAdvs = async (req, res) => {
       res.redirect(`/advs_fullPage/${newAdvs.id}`);
     }
   } catch (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 };
@@ -63,7 +62,6 @@ const createAdvs = async (req, res) => {
 const deleteAdvs = async (req, res) => {
   try {
     const { id } = req.body;
-    console.log(id);
     await Advertisement.destroy({ where: { id } });
     res.sendStatus(200);
   } catch (error) {

@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('../components/Layout');
 
 module.exports = function AdvsFullPage({ title, adv }) {
-  console.log(adv);
   return (
     <Layout title={title}>
 

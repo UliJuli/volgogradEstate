@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     const wishs = user?.id ? res.app.locals.userData[user.id].wishlist : [];
     renderTemplate(MainPage, { user, advs, wishs }, res);
   } catch (error) {
-    console.log(error);
+    res.sendStatus(500);
   }
 });
 

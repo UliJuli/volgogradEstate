@@ -9,6 +9,7 @@ function parseAdvData(adv, isInHistory) {
     },
     options: {
       preset: 'islands#yellowIcon',
+      id,
     },
   };
   if (!isInHistory) delete res.options.preset;
@@ -24,7 +25,6 @@ async function getAdvsCoords() {
     return;
   }
   const rawData = await req.json();
-  console.log('~ rawData', rawData);
   const parsedData = rawData.map((adv) => parseAdvData(adv, checkAdvForCookies(adv)));
   return parsedData;
 }
@@ -33,7 +33,7 @@ yMap.isInited.then(async () => {
   const advsCoords = await getAdvsCoords();
 
   addNewObjsInMap(yMap, advsCoords);
-  getObjInMapArea(yMap, callBack);
+  getObjInMapArea(yMap, AdvsDrawer);
   dynamicBalloonWraper(yMap);
 
   const srchOnMapInp = document.getElementById('search-on-map');

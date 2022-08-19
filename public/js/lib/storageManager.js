@@ -11,6 +11,7 @@ function addDataSesStorageObj(key, data) {
 }
 
 function getDataSesStorageObj(key, dataId) {
+  if (!sessionStorage[key]) sessionStorage[key] = '{}';
   const dataInSesStorage = JSON.parse(sessionStorage[key]);
   if (dataInSesStorage[dataId]) return dataInSesStorage[dataId];
   return null;

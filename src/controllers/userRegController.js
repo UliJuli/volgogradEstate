@@ -26,7 +26,7 @@ const createUser = async (req, res) => {
       res.redirect('/');
     });
   } catch (error) {
-    console.log('Error', error);
+    res.sendStatus(500);
   }
 };
 module.exports = { renderUserRegistr, createUser };

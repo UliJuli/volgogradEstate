@@ -34,13 +34,11 @@ router.post('/delete/:id', async (req, res) => {
     await Wishlist.destroy({ where: { userId: user.id, advertisementId: id } });
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 });
 
 router.post('/add/:id', async (req, res) => {
-  console.log(1);
   const { userData } = res.app.locals;
   const { id } = req.params;
   const { user } = res.locals;
@@ -62,9 +60,7 @@ router.post('/add/:id', async (req, res) => {
       }
       res.sendStatus(300);
     }
-    console.log(2);
   } catch (error) {
-    console.log('~ error', error);
     res.sendStatus(500);
   }
 });
