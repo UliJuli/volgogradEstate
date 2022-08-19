@@ -58,7 +58,7 @@ class AdvEditCreateForm extends React.PureComponent {
         <div className="mb-3">
           {!isEditForm && <button type="submit" className="btn btn-primary">Создать</button>}
           {isEditForm && <button type="submit" className="btn btn-primary">Изменить</button>}
-          {isEditForm && <a href="/#" className="btn btn-primary">Удалить</a>}
+          {isEditForm && <a href={`/admin/advs/${adv.id}/delete`} className="btn btn-primary">Удалить</a>}
         </div>
       </form>
     );

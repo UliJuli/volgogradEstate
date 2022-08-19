@@ -97,9 +97,9 @@ const editAdv = async (req, res) => {
 
 const deleteAdv = async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     await Advertisement.destroy({ where: { id } });
-    res.sendStatus(200);
+    res.redirect('/admin');
   } catch (error) {
     res.sendStatus(500);
   }
