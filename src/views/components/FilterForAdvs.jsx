@@ -7,7 +7,8 @@ class FilterForAdvs extends React.PureComponent {
         <div className="filter-category">
           <p>Категория:</p>
           <select name="apart" className="form-select" aria-label="Default select example">
-            <option value="1" selected>Квартира</option>
+            <option value="1" selected>Выберите тип</option>
+            <option value="1">Квартира</option>
             <option value="2">Комната</option>
             <option value="3">Дом</option>
           </select>
@@ -16,15 +17,15 @@ class FilterForAdvs extends React.PureComponent {
           <h8>Количество комнат :</h8>
           <div className="boxcheck">
             <div className="form-check form-check-inline">
-              <input name="roomCount1" className="form-check-input" type="checkbox" id="roomCount-1" value="option1" />
+              <input name="roomCount1" className="form-check-input" type="checkbox" id="roomCount-1" value="1" />
               <label className="form-check-label" htmlFor="roomCount-1">1</label>
             </div>
             <div className="form-check form-check-inline">
-              <input name="roomCount2" className="form-check-input" type="checkbox" id="roomCount-2" value="option2" />
+              <input name="roomCount2" className="form-check-input" type="checkbox" id="roomCount-2" value="2" />
               <label className="form-check-label" htmlFor="roomCount-2">2</label>
             </div>
             <div className="form-check form-check-inline">
-              <input name="roomCount3" className="form-check-input" type="checkbox" id="roomCount-3" value="option3" />
+              <input name="roomCount3" className="form-check-input" type="checkbox" id="roomCount-3" value="3" />
               <label className="form-check-label" htmlFor="roomCount-3">3</label>
             </div>
           </div>
