@@ -1,9 +1,11 @@
 const React = require('react');
 const Layout = require('../components/Layout');
 
-module.exports = function AdvsFullPage({ title, adv }) {
+module.exports = function AdvsFullPage({
+  title, adv, admin, user,
+}) {
   return (
-    <Layout title={title}>
+    <Layout title={title} admin={admin} user={user}>
       <div className="container" style={{ width: '600px' }}>
         <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
@@ -31,9 +33,7 @@ module.exports = function AdvsFullPage({ title, adv }) {
       </div>
       <div className="center btn-onFullPage">
         <a href="tel:+1800229933" className="btn btn-primary btn-lg">Позвонить</a>
-        <a href="/" className="btn  btn-success btn-lg btn-wishes">В избранное</a>
         <a href="/" className="btn btn-secondary btn-lg">Назад</a>
-        <a href="/advs_edit" className="btn  btn-warning btn-lg">Изменить/Создать</a>
       </div>
 
     </Layout>

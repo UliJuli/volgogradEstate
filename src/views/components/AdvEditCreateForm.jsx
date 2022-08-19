@@ -15,7 +15,7 @@ class AdvEditCreateForm extends React.PureComponent {
         <select name="category" className="form-select" aria-label="Default select example">
           <option selected disabled>Выбор категории</option>
           {allCategories.map((category) => (
-            <option key={category.id} selected={category.id === adv.category && true}>{category.name}</option>
+            <option key={category.id}>{category.name}</option>
           ))}
         </select>
         <div className="mb-3">

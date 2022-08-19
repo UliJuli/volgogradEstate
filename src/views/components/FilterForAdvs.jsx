@@ -43,7 +43,7 @@ class FilterForAdvs extends React.PureComponent {
             <span className="input-group-text">50000</span>
           </div>
         </div>
-        <button type="submit" className="filter-btn">Фильтровать</button>
+        <button type="submit" className="filter-btn btn btn-primary">Фильтровать</button>
       </form>
     );
   }

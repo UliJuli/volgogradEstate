@@ -4,8 +4,10 @@ const AdvsFullPage = require('../views/pages/AdvsFullPage');
 const { Advertisement } = require('../../db/models');
 
 const renderFlatPage = async (req, res) => {
+  const { id } = req.params;
+  const adv = await Advertisement.findByPk(id);
   res.locals.title = 'Some project';
-  renderTemplate(AdvsFullPage, {}, res);
+  renderTemplate(AdvsFullPage, { adv }, res);
 };
 
 const getFlatData = async (req, res) => {

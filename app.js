@@ -39,7 +39,6 @@ app.use(logInSessionHandler);
 const mainRouter = require('./src/routes/mainRouter');
 const adminRouter = require('./src/routes/adminRouter');
 
-app.use('/admin', adminRouter);
 const userRegRoutes = require('./src/routes/userRegRoutes'); // Роуты на регистрацию
 const userLoginRoutes = require('./src/routes/userLoginRoutes'); // Роуты на Логин
 
@@ -53,6 +52,7 @@ const flatRouter = require('./src/routes/flatRouter');
 const adsvMapRouter = require('./src/routes/adsvMapRouter');
 const filterRouter = require('./src/routes/filterRouter');
 
+app.use('/admin', adminRouter);
 app.use('/', advsEditCreateRoutes);
 app.use('/', advsFullRoutes);
 app.use('/', userLoginRoutes);

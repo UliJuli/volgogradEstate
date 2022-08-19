@@ -8,7 +8,7 @@ class Header extends React.PureComponent {
         <nav className="navbar navbar-nav navbar-expand-lg bg-light">
           <div className="container-fluid" style={{ gap: '.8rem' }}>
             <div className="logo-container">
-              <img className="logo-img" src="img/IMG_1829.png" alt="" />
+              <img className="logo-img" src="/img/IMG_1829.png" alt="" />
             </div>
             <button className="navbar-toggler" style={{ marginLeft: 'auto' }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />

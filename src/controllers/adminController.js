@@ -68,7 +68,6 @@ const createAdvs = async (req, res) => {
 
 const editAdv = async (req, res) => {
   try {
-    res.locals.title = 'Some project';
     const {
       title,
       description,
@@ -78,7 +77,9 @@ const editAdv = async (req, res) => {
       square,
       roomCount,
     } = req.body;
+    console.log('~ req.body', req.body);
     const { id } = req.params;
+    console.log('~ id', id);
     const advToUpdate = await Advertisement.findByPk(id);
     const dataAdvToUpdate = {};
     if (title) dataAdvToUpdate.title = title;
@@ -135,6 +136,7 @@ const updateAdminProfile = async (req, res) => {
     const {
       firstName, lastName, phoneNumber, email,
     } = req.body;
+    console.log('~ req.body', req.body);
     const adminToUpdate = await Admin.findByPk(admin.id);
     const dataToUpdate = {};
     if (firstName) dataToUpdate.firstName = firstName;
