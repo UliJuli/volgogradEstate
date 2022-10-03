@@ -9,7 +9,6 @@ class AdvComponent extends React.PureComponent {
       adv, user, wishs, admin,
     } = this.props;
     const photoUrl = `url('/img/flats/${photo.split(',')[0]}')`;
-    // "url('https://source.unsplash.com/600x900/?tech,street')"
     return (
       <div id={id} className="card text-white card-has-bg click-col" style={{ backgroundImage: photoUrl, backgroundSize: 'cover' }}>
         <div className="card-img-overlay d-flex flex-column">
